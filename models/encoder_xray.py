@@ -1,0 +1,1 @@
+# Feature extraction from 2D X-ray using ResNet-50.

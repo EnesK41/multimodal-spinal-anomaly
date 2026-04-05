@@ -1,0 +1,1 @@
+# 3D feature extraction from CT volumes using 3D ResNet-18.

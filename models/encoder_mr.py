@@ -1,0 +1,1 @@
+# 3D feature extraction from MR volumes using 3D ResNet-18.

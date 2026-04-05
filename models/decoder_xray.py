@@ -1,0 +1,1 @@
+# Anomaly segmentation mask generation from embeddings using UNet Decoder.
