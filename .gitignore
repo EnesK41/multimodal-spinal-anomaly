@@ -36,3 +36,5 @@ Thumbs.db
 /Literatür
 *.pdf
 *.docx
+*.csv
+*.json

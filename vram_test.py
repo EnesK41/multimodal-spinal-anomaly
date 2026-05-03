@@ -1,8 +1,8 @@
 # Test to see if 16 gb vram is enough to run 4 models (2 of them is 3d)
 
 import torch
-from models.encoder_xray import XrayEncoder
-from models.encoder_ct import CTEncoder
+from models.XrayEncoder import XrayEncoder
+from models.CTEncoder import CTEncoder
 
 def test_vram():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -12,10 +12,10 @@ def test_vram():
     
     batch_size = 2
     
-    dummy_xray = torch.randn(batch_size, 1, 256, 256, device=device)
+    dummy_xray = torch.randn(batch_size, 1, 512, 256, device=device)
     dummy_ct = torch.randn(batch_size, 1, 128, 256, 256, device=device)
     
-    out_xray = model_xray(dummy_xray)
+    out_xray, _ = model_xray(dummy_xray)
     out_ct = model_ct(dummy_ct)
     
     loss = out_xray.sum() + out_ct.sum()

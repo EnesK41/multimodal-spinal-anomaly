@@ -16,7 +16,7 @@ class Config:
     # ---------------------------------------------------------
     # IMAGE & PREPROCESSING PARAMETERS
     # ---------------------------------------------------------
-    TARGET_SIZE_2D = 256
+    TARGET_SIZE_2D = (512, 256)
     TARGET_SIZE_3D = (128, 256, 256) # Depth, Height, Width for CT/MR
     CROP_MARGIN = 20
     
