@@ -1,0 +1,49 @@
+{
+  "run_name": "png_cv5_seed42_resnet34_pretrained_mask_scrubbed_roi045_fold_02",
+  "checkpoint": "checkpoints\\png_cv5_seed42_resnet34_pretrained_mask_scrubbed_roi045_fold_02_best.pth",
+  "data_dir": "data/png_patients_full",
+  "demo_holdout_patients": [
+    "patient_003",
+    "patient_008",
+    "patient_011",
+    "patient_022",
+    "patient_030",
+    "patient_037",
+    "patient_038",
+    "patient_056"
+  ],
+  "best_epoch": 3,
+  "best_threshold": 0.45,
+  "best_score_balanced_accuracy": 1.0,
+  "holdout_metrics_best_threshold": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 6,
+    "tn": 2,
+    "fp": 0,
+    "fn": 0,
+    "n": 8
+  },
+  "holdout_metrics_default_threshold": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 6,
+    "tn": 2,
+    "fp": 0,
+    "fn": 0,
+    "n": 8
+  },
+  "split_csv": "experiment_results\\png_classifier\\png_demo_holdout_split.csv"
+}

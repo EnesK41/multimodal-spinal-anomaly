@@ -1,0 +1,124 @@
+{
+  "experiment": "cv5",
+  "seed": 7,
+  "mean_best_balanced_accuracy": 0.9023809523809524,
+  "results": [
+    {
+      "run_name": "cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_01",
+      "val_patients": [
+        "patient_004",
+        "patient_008",
+        "patient_011",
+        "patient_016",
+        "patient_021",
+        "patient_032",
+        "patient_037",
+        "patient_041",
+        "patient_056",
+        "patient_059"
+      ],
+      "best_epoch": 5,
+      "best_score": 0.9285714285714286,
+      "best_val_accuracy": 0.9,
+      "best_threshold": 0.55,
+      "checkpoint": "checkpoints/cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_01_best_xray_classifier_roi_045_balacc.pth",
+      "freeze_encoder": false,
+      "original_only_val": true,
+      "encoder_type": "resnet34",
+      "pretrained_encoder": true,
+      "fold": 1
+    },
+    {
+      "run_name": "cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_02",
+      "val_patients": [
+        "patient_003",
+        "patient_010",
+        "patient_012",
+        "patient_023",
+        "patient_027",
+        "patient_036",
+        "patient_039",
+        "patient_055"
+      ],
+      "best_epoch": 2,
+      "best_score": 0.75,
+      "best_val_accuracy": 0.875,
+      "best_threshold": 0.45,
+      "checkpoint": "checkpoints/cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_02_best_xray_classifier_roi_045_balacc.pth",
+      "freeze_encoder": false,
+      "original_only_val": true,
+      "encoder_type": "resnet34",
+      "pretrained_encoder": true,
+      "fold": 2
+    },
+    {
+      "run_name": "cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_03",
+      "val_patients": [
+        "patient_018",
+        "patient_028",
+        "patient_029",
+        "patient_034",
+        "patient_038",
+        "patient_045",
+        "patient_049",
+        "patient_058"
+      ],
+      "best_epoch": 3,
+      "best_score": 1.0,
+      "best_val_accuracy": 1.0,
+      "best_threshold": 0.55,
+      "checkpoint": "checkpoints/cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_03_best_xray_classifier_roi_045_balacc.pth",
+      "freeze_encoder": false,
+      "original_only_val": true,
+      "encoder_type": "resnet34",
+      "pretrained_encoder": true,
+      "fold": 3
+    },
+    {
+      "run_name": "cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_04",
+      "val_patients": [
+        "patient_002",
+        "patient_006",
+        "patient_009",
+        "patient_020",
+        "patient_040",
+        "patient_042",
+        "patient_052",
+        "patient_061"
+      ],
+      "best_epoch": 2,
+      "best_score": 0.8333333333333333,
+      "best_val_accuracy": 0.75,
+      "best_threshold": 0.65,
+      "checkpoint": "checkpoints/cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_04_best_xray_classifier_roi_045_balacc.pth",
+      "freeze_encoder": false,
+      "original_only_val": true,
+      "encoder_type": "resnet34",
+      "pretrained_encoder": true,
+      "fold": 4
+    },
+    {
+      "run_name": "cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_05",
+      "val_patients": [
+        "patient_007",
+        "patient_022",
+        "patient_025",
+        "patient_026",
+        "patient_030",
+        "patient_033",
+        "patient_035",
+        "patient_060"
+      ],
+      "best_epoch": 2,
+      "best_score": 1.0,
+      "best_val_accuracy": 1.0,
+      "best_threshold": 0.5,
+      "checkpoint": "checkpoints/cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_fold_05_best_xray_classifier_roi_045_balacc.pth",
+      "freeze_encoder": false,
+      "original_only_val": true,
+      "encoder_type": "resnet34",
+      "pretrained_encoder": true,
+      "fold": 5
+    }
+  ]
+}

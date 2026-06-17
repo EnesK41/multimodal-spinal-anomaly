@@ -1,14 +1,22 @@
-# Feature extraction from 2D X-ray using ResNet-50.
+# Feature extraction from 2D X-ray using ResNet-34.
 
 import torch
 import torch.nn as nn
 import torchvision.models as models
 
 class XrayEncoder(nn.Module):
-    def __init__(self, embedding_dim=512):
+    def __init__(self, embedding_dim=512, pretrained=False):
         super().__init__()
-        self.resnet = models.resnet34(weights=None)
+        weights = models.ResNet34_Weights.DEFAULT if pretrained else None
+        self.resnet = models.resnet34(weights=weights)
+
+        old_conv = self.resnet.conv1
         self.resnet.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+
+        if pretrained:
+            with torch.no_grad():
+                self.resnet.conv1.weight.copy_(old_conv.weight.mean(dim=1, keepdim=True))
+
         self.fc = nn.Linear(512, embedding_dim)
 
     def forward(self, x):

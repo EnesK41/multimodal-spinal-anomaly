@@ -1,0 +1,614 @@
+{
+  "checkpoint": "checkpoints\\png_roi045_no_extra_roi_seed42_resnet34_pretrained_mask_scrubbed_fold_04_best.pth",
+  "run_name": "png_roi045_no_extra_roi_seed42_resnet34_pretrained_mask_scrubbed_fold_04",
+  "threshold": 0.2,
+  "input_data_dir": "data/png_patients_roi045",
+  "use_body_roi": false,
+  "val_patients_unseen_by_this_model": [
+    "patient_002",
+    "patient_007",
+    "patient_018",
+    "patient_027",
+    "patient_032",
+    "patient_042",
+    "patient_045",
+    "patient_052"
+  ],
+  "splits": {
+    "seen_train_all_augmented": {
+      "sample_count": 204,
+      "patient_count": 34,
+      "metrics": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 25,
+        "tn": 9,
+        "fp": 0,
+        "fn": 0,
+        "n": 34
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_003",
+          "label": 1,
+          "probability": 0.9647625585397085,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_004",
+          "label": 1,
+          "probability": 0.9649174710114797,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_006",
+          "label": 1,
+          "probability": 0.9572442372639974,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_008",
+          "label": 1,
+          "probability": 0.9608829418818156,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_009",
+          "label": 1,
+          "probability": 0.9695558349291483,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_010",
+          "label": 1,
+          "probability": 0.9648673137029012,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_011",
+          "label": 1,
+          "probability": 0.9715308248996735,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_012",
+          "label": 1,
+          "probability": 0.9690154989560446,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_016",
+          "label": 1,
+          "probability": 0.9700052638848623,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_020",
+          "label": 1,
+          "probability": 0.9625795086224874,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_021",
+          "label": 1,
+          "probability": 0.9641622602939606,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_022",
+          "label": 1,
+          "probability": 0.9688553710778555,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_023",
+          "label": 1,
+          "probability": 0.9634388188521067,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_025",
+          "label": 1,
+          "probability": 0.9683708151181539,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_026",
+          "label": 1,
+          "probability": 0.9702545404434204,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_028",
+          "label": 1,
+          "probability": 0.9637793898582458,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_029",
+          "label": 1,
+          "probability": 0.962713897228241,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_030",
+          "label": 1,
+          "probability": 0.9648736913998922,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_033",
+          "label": 0,
+          "probability": 0.047316087409853935,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_034",
+          "label": 0,
+          "probability": 0.04791506938636303,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_035",
+          "label": 0,
+          "probability": 0.037202912382781506,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_036",
+          "label": 0,
+          "probability": 0.03482641372829676,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_037",
+          "label": 0,
+          "probability": 0.04539284172157446,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_038",
+          "label": 0,
+          "probability": 0.04416026299198469,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_039",
+          "label": 0,
+          "probability": 0.07593510113656521,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_040",
+          "label": 0,
+          "probability": 0.05918566385904948,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_041",
+          "label": 0,
+          "probability": 0.04683938374121984,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_049",
+          "label": 1,
+          "probability": 0.9696080684661865,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_055",
+          "label": 1,
+          "probability": 0.967417041460673,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_056",
+          "label": 1,
+          "probability": 0.9607969323794047,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_058",
+          "label": 1,
+          "probability": 0.9604223271210989,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_059",
+          "label": 1,
+          "probability": 0.9668095906575521,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_060",
+          "label": 1,
+          "probability": 0.931794802347819,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_061",
+          "label": 1,
+          "probability": 0.9660490453243256,
+          "prediction": 1,
+          "correct": 1
+        }
+      ]
+    },
+    "seen_train_original_only": {
+      "sample_count": 34,
+      "patient_count": 34,
+      "metrics": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 25,
+        "tn": 9,
+        "fp": 0,
+        "fn": 0,
+        "n": 34
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_003",
+          "label": 1,
+          "probability": 0.9645969867706299,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_004",
+          "label": 1,
+          "probability": 0.9661150574684143,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_006",
+          "label": 1,
+          "probability": 0.9530729651451111,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_008",
+          "label": 1,
+          "probability": 0.960254430770874,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_009",
+          "label": 1,
+          "probability": 0.9642056226730347,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_010",
+          "label": 1,
+          "probability": 0.97208571434021,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_011",
+          "label": 1,
+          "probability": 0.9712308049201965,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_012",
+          "label": 1,
+          "probability": 0.9777141213417053,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_016",
+          "label": 1,
+          "probability": 0.9687701463699341,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_020",
+          "label": 1,
+          "probability": 0.9706083536148071,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_021",
+          "label": 1,
+          "probability": 0.9586106538772583,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_022",
+          "label": 1,
+          "probability": 0.9653874635696411,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_023",
+          "label": 1,
+          "probability": 0.9689638614654541,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_025",
+          "label": 1,
+          "probability": 0.9691950678825378,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_026",
+          "label": 1,
+          "probability": 0.9724043011665344,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_028",
+          "label": 1,
+          "probability": 0.9694796800613403,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_029",
+          "label": 1,
+          "probability": 0.957114577293396,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_030",
+          "label": 1,
+          "probability": 0.958073616027832,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_033",
+          "label": 0,
+          "probability": 0.03332696855068207,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_034",
+          "label": 0,
+          "probability": 0.042390402406454086,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_035",
+          "label": 0,
+          "probability": 0.03777117654681206,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_036",
+          "label": 0,
+          "probability": 0.030670372769236565,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_037",
+          "label": 0,
+          "probability": 0.04336396977305412,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_038",
+          "label": 0,
+          "probability": 0.03414923697710037,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_039",
+          "label": 0,
+          "probability": 0.04997172951698303,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_040",
+          "label": 0,
+          "probability": 0.05061410367488861,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_041",
+          "label": 0,
+          "probability": 0.03705458715558052,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_049",
+          "label": 1,
+          "probability": 0.9667859077453613,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_055",
+          "label": 1,
+          "probability": 0.9654057025909424,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_056",
+          "label": 1,
+          "probability": 0.9691500067710876,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_058",
+          "label": 1,
+          "probability": 0.9557464718818665,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_059",
+          "label": 1,
+          "probability": 0.961712121963501,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_060",
+          "label": 1,
+          "probability": 0.9147650003433228,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_061",
+          "label": 1,
+          "probability": 0.9735444188117981,
+          "prediction": 1,
+          "correct": 1
+        }
+      ]
+    },
+    "unseen_val_original_only": {
+      "sample_count": 8,
+      "patient_count": 8,
+      "metrics": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 6,
+        "tn": 2,
+        "fp": 0,
+        "fn": 0,
+        "n": 8
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_002",
+          "label": 1,
+          "probability": 0.9230592250823975,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_007",
+          "label": 1,
+          "probability": 0.9625611901283264,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_018",
+          "label": 1,
+          "probability": 0.7636106610298157,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_027",
+          "label": 1,
+          "probability": 0.970565676689148,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_032",
+          "label": 0,
+          "probability": 0.1238742545247078,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_042",
+          "label": 0,
+          "probability": 0.18785102665424347,
+          "prediction": 0,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_045",
+          "label": 1,
+          "probability": 0.7266005873680115,
+          "prediction": 1,
+          "correct": 1
+        },
+        {
+          "base_patient_id": "patient_052",
+          "label": 1,
+          "probability": 0.2429673820734024,
+          "prediction": 1,
+          "correct": 1
+        }
+      ]
+    }
+  }
+}

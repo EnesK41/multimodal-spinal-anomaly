@@ -1,0 +1,455 @@
+{
+  "experiment": "feature_baseline",
+  "seed": 42,
+  "label_source": "mask",
+  "scrub_prompts": true,
+  "encoder_type": "resnet34",
+  "pretrained_encoder": true,
+  "roi_width_ratio": 0.35,
+  "mean_default_balanced_accuracy": 0.773809523809524,
+  "mean_best_threshold_balanced_accuracy": 0.8571428571428571,
+  "results": [
+    {
+      "fold": 1,
+      "val_patients": [
+        "patient_009",
+        "patient_010",
+        "patient_012",
+        "patient_026",
+        "patient_028",
+        "patient_029",
+        "patient_033",
+        "patient_035",
+        "patient_041",
+        "patient_059"
+      ],
+      "default_threshold_metrics": {
+        "accuracy": 0.6,
+        "balanced_accuracy": 0.6190476190476191,
+        "auc": 0.8571428571428572,
+        "sensitivity": 0.5714285714285714,
+        "specificity": 0.6666666666666666,
+        "precision": 0.8,
+        "recall": 0.5714285714285714,
+        "f1": 0.6666666666666666,
+        "tp": 4,
+        "tn": 2,
+        "fp": 1,
+        "fn": 3,
+        "n": 10
+      },
+      "best_threshold": 0.6,
+      "best_threshold_metrics": {
+        "accuracy": 0.7,
+        "balanced_accuracy": 0.7857142857142857,
+        "auc": 0.8571428571428572,
+        "sensitivity": 0.5714285714285714,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "f1": 0.7272727272727273,
+        "tp": 4,
+        "tn": 3,
+        "fp": 0,
+        "fn": 3,
+        "n": 10
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_009",
+          "label": 1.0,
+          "prob": 0.034521641370580364
+        },
+        {
+          "base_patient_id": "patient_010",
+          "label": 1.0,
+          "prob": 0.2511516356451648
+        },
+        {
+          "base_patient_id": "patient_012",
+          "label": 1.0,
+          "prob": 0.9991081416889337
+        },
+        {
+          "base_patient_id": "patient_026",
+          "label": 1.0,
+          "prob": 0.7067458789253769
+        },
+        {
+          "base_patient_id": "patient_028",
+          "label": 1.0,
+          "prob": 0.9200780663556454
+        },
+        {
+          "base_patient_id": "patient_029",
+          "label": 1.0,
+          "prob": 0.019845994022090505
+        },
+        {
+          "base_patient_id": "patient_033",
+          "label": 0.0,
+          "prob": 0.0006969753526924025
+        },
+        {
+          "base_patient_id": "patient_035",
+          "label": 0.0,
+          "prob": 0.0019776002651125664
+        },
+        {
+          "base_patient_id": "patient_041",
+          "label": 0.0,
+          "prob": 0.5748141026615805
+        },
+        {
+          "base_patient_id": "patient_059",
+          "label": 1.0,
+          "prob": 0.710888327452727
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "val_patients": [
+        "patient_003",
+        "patient_008",
+        "patient_011",
+        "patient_022",
+        "patient_030",
+        "patient_037",
+        "patient_038",
+        "patient_056"
+      ],
+      "default_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 1.0,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "best_threshold": 0.05,
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 1.0,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_003",
+          "label": 1.0,
+          "prob": 0.018337966446249604
+        },
+        {
+          "base_patient_id": "patient_008",
+          "label": 1.0,
+          "prob": 0.979985451978123
+        },
+        {
+          "base_patient_id": "patient_011",
+          "label": 1.0,
+          "prob": 0.9954066946509251
+        },
+        {
+          "base_patient_id": "patient_022",
+          "label": 1.0,
+          "prob": 0.5541356092136969
+        },
+        {
+          "base_patient_id": "patient_030",
+          "label": 1.0,
+          "prob": 0.8751256937273871
+        },
+        {
+          "base_patient_id": "patient_037",
+          "label": 0.0,
+          "prob": 0.005636864466602326
+        },
+        {
+          "base_patient_id": "patient_038",
+          "label": 0.0,
+          "prob": 0.002497149923841559
+        },
+        {
+          "base_patient_id": "patient_056",
+          "label": 1.0,
+          "prob": 0.9936244936454595
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "val_patients": [
+        "patient_016",
+        "patient_020",
+        "patient_021",
+        "patient_034",
+        "patient_040",
+        "patient_049",
+        "patient_060",
+        "patient_061"
+      ],
+      "default_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 0.8333333333333334,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "best_threshold": 0.5,
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 0.8333333333333334,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_016",
+          "label": 1.0,
+          "prob": 0.9988175556022831
+        },
+        {
+          "base_patient_id": "patient_020",
+          "label": 1.0,
+          "prob": 0.8320035038173793
+        },
+        {
+          "base_patient_id": "patient_021",
+          "label": 1.0,
+          "prob": 0.9012413955784215
+        },
+        {
+          "base_patient_id": "patient_034",
+          "label": 0.0,
+          "prob": 0.4968724188075621
+        },
+        {
+          "base_patient_id": "patient_040",
+          "label": 0.0,
+          "prob": 0.0047665251040915155
+        },
+        {
+          "base_patient_id": "patient_049",
+          "label": 1.0,
+          "prob": 0.9586511607348839
+        },
+        {
+          "base_patient_id": "patient_060",
+          "label": 1.0,
+          "prob": 0.00024608323153946763
+        },
+        {
+          "base_patient_id": "patient_061",
+          "label": 1.0,
+          "prob": 0.999946373863393
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "val_patients": [
+        "patient_002",
+        "patient_007",
+        "patient_018",
+        "patient_027",
+        "patient_032",
+        "patient_042",
+        "patient_045",
+        "patient_052"
+      ],
+      "default_threshold_metrics": {
+        "accuracy": 0.75,
+        "balanced_accuracy": 0.6666666666666667,
+        "auc": 0.8333333333333334,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 0.5,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "f1": 0.8333333333333334,
+        "tp": 5,
+        "tn": 1,
+        "fp": 1,
+        "fn": 1,
+        "n": 8
+      },
+      "best_threshold": 0.6,
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 0.8333333333333334,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_002",
+          "label": 1.0,
+          "prob": 0.6819368950533757
+        },
+        {
+          "base_patient_id": "patient_007",
+          "label": 1.0,
+          "prob": 0.9568311871596856
+        },
+        {
+          "base_patient_id": "patient_018",
+          "label": 1.0,
+          "prob": 0.9114634353273967
+        },
+        {
+          "base_patient_id": "patient_027",
+          "label": 1.0,
+          "prob": 0.9989724062957365
+        },
+        {
+          "base_patient_id": "patient_032",
+          "label": 0.0,
+          "prob": 0.036572339631382705
+        },
+        {
+          "base_patient_id": "patient_042",
+          "label": 0.0,
+          "prob": 0.5744074025439757
+        },
+        {
+          "base_patient_id": "patient_045",
+          "label": 1.0,
+          "prob": 0.982406784884586
+        },
+        {
+          "base_patient_id": "patient_052",
+          "label": 1.0,
+          "prob": 0.00040325949074794797
+        }
+      ]
+    },
+    {
+      "fold": 5,
+      "val_patients": [
+        "patient_004",
+        "patient_006",
+        "patient_023",
+        "patient_025",
+        "patient_036",
+        "patient_039",
+        "patient_055",
+        "patient_058"
+      ],
+      "default_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.75,
+        "auc": 0.75,
+        "sensitivity": 1.0,
+        "specificity": 0.5,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1": 0.923076923076923,
+        "tp": 6,
+        "tn": 1,
+        "fp": 1,
+        "fn": 0,
+        "n": 8
+      },
+      "best_threshold": 0.05,
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.75,
+        "auc": 0.75,
+        "sensitivity": 1.0,
+        "specificity": 0.5,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1": 0.923076923076923,
+        "tp": 6,
+        "tn": 1,
+        "fp": 1,
+        "fn": 0,
+        "n": 8
+      },
+      "rows": [
+        {
+          "base_patient_id": "patient_004",
+          "label": 1.0,
+          "prob": 0.9159558495180428
+        },
+        {
+          "base_patient_id": "patient_006",
+          "label": 1.0,
+          "prob": 0.5262516877216356
+        },
+        {
+          "base_patient_id": "patient_023",
+          "label": 1.0,
+          "prob": 0.9970801229130952
+        },
+        {
+          "base_patient_id": "patient_025",
+          "label": 1.0,
+          "prob": 0.9996452141188766
+        },
+        {
+          "base_patient_id": "patient_036",
+          "label": 0.0,
+          "prob": 5.396392068684545e-05
+        },
+        {
+          "base_patient_id": "patient_039",
+          "label": 0.0,
+          "prob": 0.9978364158733325
+        },
+        {
+          "base_patient_id": "patient_055",
+          "label": 1.0,
+          "prob": 0.9993027938013421
+        },
+        {
+          "base_patient_id": "patient_058",
+          "label": 1.0,
+          "prob": 0.9997083697681322
+        }
+      ]
+    }
+  ]
+}

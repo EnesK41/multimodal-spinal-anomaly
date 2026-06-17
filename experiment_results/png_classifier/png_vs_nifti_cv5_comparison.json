@@ -1,0 +1,83 @@
+{
+  "same_settings": {
+    "split": "5-fold patient-level CV, original-only validation, same fold patients as old seed42 experiment",
+    "encoder": "ResNet34 pretrained",
+    "roi_width_ratio": 0.45,
+    "labels": "mask-derived binary label",
+    "prompt": "scrubbed",
+    "epochs": 20,
+    "min_save_epoch": 3,
+    "early_stopping_patience": 6
+  },
+  "old_nifti_cv5": {
+    "result_file": "experiment_results/cv5_resnet34_pretrained_mask_scrubbed_roi045_seed_42.json",
+    "mean_best_balanced_accuracy": 0.919047619047619,
+    "fold_best_balanced_accuracy": [
+      0.9285714285714286,
+      1.0,
+      0.8333333333333333,
+      0.9166666666666667,
+      0.9166666666666667
+    ],
+    "fold_best_thresholds": [
+      0.5,
+      0.35,
+      0.7,
+      0.4,
+      0.8
+    ]
+  },
+  "png_full_cv5": {
+    "result_file": "experiment_results/png_classifier/png_cv5_seed42_resnet34_pretrained_mask_scrubbed_roi045.json",
+    "mean_best_balanced_accuracy": 0.9023809523809524,
+    "mean_default_threshold_balanced_accuracy": 0.8357142857142857,
+    "fold_best_balanced_accuracy": [
+      0.9285714285714286,
+      1.0,
+      0.8333333333333333,
+      1.0,
+      0.75
+    ],
+    "fold_default_threshold_balanced_accuracy": [
+      0.9285714285714286,
+      1.0,
+      0.6666666666666667,
+      0.9166666666666667,
+      0.6666666666666667
+    ],
+    "fold_best_thresholds": [
+      0.5,
+      0.45,
+      0.9,
+      0.2,
+      0.2
+    ]
+  },
+  "png_roi045_no_extra_roi_cv5": {
+    "result_file": "experiment_results/png_classifier/png_roi045_no_extra_roi_cv5_seed42_resnet34_pretrained_mask_scrubbed.json",
+    "mean_best_balanced_accuracy": 0.9166666666666666,
+    "mean_default_threshold_balanced_accuracy": 0.7738095238095238,
+    "fold_best_balanced_accuracy": [
+      1.0,
+      1.0,
+      0.8333333333333333,
+      1.0,
+      0.75
+    ],
+    "fold_default_threshold_balanced_accuracy": [
+      0.7857142857142857,
+      1.0,
+      0.5,
+      0.9166666666666667,
+      0.6666666666666667
+    ],
+    "fold_best_thresholds": [
+      0.05,
+      0.4,
+      0.8,
+      0.2,
+      0.2
+    ]
+  },
+  "interpretation": "PNG conversion preserves most of the old NIfTI model performance under the same CV protocol. The closest format match is the ROI-PNG export with no extra body ROI at training time: it is almost equal to the old NIfTI result, but threshold calibration is less stable across folds. The earlier 6-patient demo holdout was too small and optimistic."
+}

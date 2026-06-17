@@ -1,0 +1,12 @@
+\chapter*{Özet}
+\addcontentsline{toc}{chapter}{Özet}
+
+Bu tez, pediatrik hastalarda frontal omurga röntgenlerinden spinal anomali tespitini incelemektedir. Röntgen görüntüleri, pratik, yaygın ve başlangıç değerlendirmesinde sık kullanılan bir modalite olduğu için ana giriş olarak seçilmiştir. CT ve MRI tamamlayıcı anatomik bilgi sağlayabilir; ancak CT ek radyasyon yükü oluşturduğu için pediatrik hastalarda tekrarlı tarama amacıyla ideal değildir, MRI ise rutin frontal kemik hizalanması değerlendirmesi için daha az pratiktir.
+Çalışmada hasta bazlı cross-validation, boş olmayan anomali maskelerinden etiket üretimi, prompt temizleme, ROI merkezli ön işleme ve ImageNet ön eğitimli ResNet34 encoder kullanan kontrollü bir ikili sınıflandırma hattı geliştirilmiştir. Deneylerde kullanılan veri, mevcut ham verinin kalite kontrolünden geçirilmiş ve eğitim için güvenilir hale getirilmiş alt kümesi olarak ele alınmıştır.
+
+En güçlü X-ray-only model hasta bazlı 5-fold cross-validation altında 0.919 ortalama en iyi balanced accuracy değerine ulaşmıştır. PNG uyumlu cross-validation hattı ise benzer şekilde 0.917 değerine ulaşmıştır. CT destekli latent alignment, region-aware multitask learning, anomaly-type supervision ve segmentation tabanlı alternatifler de denenmiştir. CT yalnızca eğitim sırasında yardımcı gözetim olarak kullanılmıştır; final çıkarım modeli yalnızca X-ray girdisiyle çalışmaktadır.
+
+Son sistem klinik tanı aracı değil, araştırma prototipi olarak değerlendirilmelidir. Sonuçlar, küçük ve dikkatle hazırlanmış tıbbi görüntü veri setlerinde veri sızıntısı kontrolü, ön işleme doğrulaması ve dikkatli yorumlamanın kritik olduğunu göstermektedir.
+
+\vspace{1cm}
+\noindent \textbf{Anahtar Kelimeler:} Spinal anomali tespiti, röntgen sınıflandırma, CT alignment, ResNet34, hasta bazlı cross-validation, tıbbi görüntü analizi.

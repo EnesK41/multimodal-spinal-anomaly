@@ -1,0 +1,7 @@
+split,patient_id,base_patient_id,label,probability,prediction_threshold_0_5,prediction_best_threshold,best_threshold
+demo_holdout_not_train,patient_002,patient_002,1,0.9341599941253662,1,1,0.9
+demo_holdout_not_train,patient_004,patient_004,1,0.9456796646118164,1,1,0.9
+demo_holdout_not_train,patient_028,patient_028,1,0.9155510067939758,1,1,0.9
+demo_holdout_not_train,patient_038,patient_038,0,0.6017308831214905,1,0,0.9
+demo_holdout_not_train,patient_040,patient_040,0,0.8897062540054321,1,0,0.9
+demo_holdout_not_train,patient_042,patient_042,0,0.7313026189804077,1,0,0.9

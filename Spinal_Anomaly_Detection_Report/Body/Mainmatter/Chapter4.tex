@@ -1,0 +1,186 @@
+\chapter{Results and Discussion}
+\label{ch:results}
+
+This chapter presents the experimental findings of the proposed spinal anomaly detection pipeline. The evaluation focuses on patient-level generalization, leakage control, input format compatibility, and the practical value of CT-supported multimodal learning.
+
+\section{Experimental Setup}
+All classification experiments were evaluated with patient-level splits. Augmented versions of a base patient were always kept in the same split as the original patient. This constraint was necessary because augmented samples preserve the same anatomy and would otherwise cause data leakage.
+
+The cleaned working dataset contained 252 samples from 42 base patients after filtering. Among these patients, 31 were anomaly-positive and 11 were healthy or empty. Validation folds used only original samples, while training folds could use augmented samples. Additional raw patients existed outside this controlled subset, but they were not included in the reported training runs because they had not yet passed the same preprocessing and quality-control pipeline.
+
+In the experiment tables, seed refers to the random seed used to make training reproducible. It controls random operations such as fold assignment, model initialization, and data shuffling. For example, seed 42 means that the experiment was run with the random seed fixed to 42. A fold refers to one train/validation split in 5-fold cross-validation. Mean best balanced accuracy is the average, across folds, of the best validation balanced accuracy obtained after selecting the decision threshold on that fold.
+
+\section{Data Leakage and Shortcut Analysis}
+Early experiments showed that the dataset contained strong non-image shortcuts. Patient numbering and prompt text were both potentially diagnostic. Therefore, subsequent experiments used scrubbed prompts and patient-level splits. The final labels were derived from non-empty anomaly masks, where positive mask pixels indicated an anomaly-positive case.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.82\textwidth]{metadata_baseline_summary.png}
+    \caption{Metadata baseline analysis. Non-image metadata was evaluated to detect possible shortcut learning before final visual model training.}
+    \label{fig:metadata_baseline}
+\end{figure}
+
+\section{Experiment Progression}
+The final pipeline was not obtained from a single training run. Several intermediate designs were tested to understand whether the model was learning medical image content or dataset-specific shortcuts. Tables~\ref{tab:experiment_progression_a} and~\ref{tab:experiment_progression_b} summarize the main experimental decisions, why they were made, and what was learned from them.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Main experimental progression and interpretation, part 1.}
+    \label{tab:experiment_progression_a}
+    \begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X}
+        \hline
+        \textbf{Experiment} & \textbf{Reason} & \textbf{Finding} \\
+        \hline
+        Initial segmentation direction & The first idea was to localize spinal anomalies directly from masks using an encoder-decoder model. & Training curves improved, but held-out masks were often empty or misplaced, so segmentation was not reliable enough as the final output. \\
+        BCE/Dice segmentation losses & Dice, BCE, and BCE+Dice were tested to handle small anomaly masks and background imbalance. & Hybrid loss stabilized training, but did not solve wrong-location predictions on unseen patients. \\
+        Patch and ROI segmentation & Smaller crops and patches were tested to reduce background dominance. & ROI helped more than full-image input, but patch predictions were fragmented and validation Dice remained too low. \\
+        Spatial/mask alignment checks & Orientation, resizing, and mask correspondence problems could directly damage pixel-level learning. & These checks improved data understanding, but also showed that segmentation quality depended heavily on manual data reliability. \\
+        Patient-level split & Augmented versions of the same patient could otherwise appear in both train and validation. & This became the main evaluation rule and prevented the most direct leakage source. \\
+        Prompt and metadata audit & Text fields and patient numbering could reveal diagnosis without image understanding. & Prompt information was scrubbed and metadata baselines were treated as shortcut checks, not final models. \\
+        Mask-derived binary labels & CSV and prompt labels were less reliable than non-empty anomaly masks. & Binary anomaly labels became more consistent with the available visual annotations. \\
+        ROI-centered X-ray preprocessing & The full image contained irrelevant background and acquisition variation. & ROI ratio 0.45 gave the strongest clean X-ray baseline. \\
+        Frozen feature baselines & Needed to test whether fine-tuning was really necessary. & Frozen/scratch and frozen/pretrained models underperformed the fine-tuned ResNet34 classifier. \\
+        Grad-CAM and error analysis & High classification scores alone do not show whether the model uses meaningful image regions. & Grad-CAM was useful for qualitative inspection, but not reliable enough to claim anatomical localization. \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section{Segmentation Lessons}
+The segmentation branch was an important part of the project even though it did not become the final deliverable. The initial expectation was that a segmentation model could directly mark anomalous vertebral structures and provide a more interpretable result than image-level classification. In practice, this proved difficult under the available annotation conditions.
+
+The first full-image models suffered from extreme foreground-background imbalance because anomaly masks occupied a very small part of each X-ray. BCE loss encouraged mostly-background predictions, while Dice loss became unstable when predictions were spatially misplaced. Hybrid BCE+Dice improved optimization behavior but did not solve generalization. Attention or stronger decoder variants could fit training cases better, but this sometimes increased memorization rather than improving validation masks.
+
+Patch-based and ROI-based variants were then tested to reduce the search area. Patch training increased the anomaly ratio in selected regions but introduced many empty or weakly informative patches, and reconstructed predictions were often fragmented. ROI segmentation was more promising because it focused on the body-centered spinal area. However, severe deformities, unusual field-of-view, and mask alignment sensitivity still limited validation Dice.
+
+This negative result changed the direction of the study. Instead of presenting a weak segmentation model as the main output, the masks were used in a more conservative way: to derive binary anomaly labels, to audit whether ROI cropping removed relevant regions, and to support CT-mask projection experiments. This made the final pipeline less ambitious than the original segmentation goal, but more defensible.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Main experimental progression and interpretation, part 2.}
+    \label{tab:experiment_progression_b}
+    \begin{tabularx}{\textwidth}{p{0.25\textwidth}|X|X}
+        \hline
+        \textbf{Experiment} & \textbf{Reason} & \textbf{Finding} \\
+        \hline
+        CT latent alignment & CT could provide anatomical information not visible in a 2D X-ray. & Raw CT alignment was feasible but weaker than X-ray-only because of domain gap, lack of CT/X-ray spatial registration, and missing healthy CT. \\
+        CT-mask alignment & Mask projections focus the CT branch on spine anatomy instead of all tissue. & Corrected CT-mask alignment reached the X-ray-only baseline but did not clearly exceed it. \\
+        Region-aware multitask learning & Coarse anatomical region labels might regularize the classifier. & Anomaly classification improved in the best random-seed run, but region localization itself remained weak. \\
+        Anomaly-type auxiliary learning & Tested whether anomaly category labels add useful supervision. & Type prediction was unstable and sparse; it did not improve over the best region-aware result. \\
+        PNG conversion for demo & NIfTI input was inconvenient for a live prototype. & ROI-PNG training nearly matched the NIfTI pipeline and was selected for the demo. \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.82\textwidth]{known_vs_roi_label.png}
+    \caption{Audit of known patient-range labels versus ROI-mask-derived labels. This analysis was used to verify that the ROI preprocessing did not remove anomaly evidence.}
+    \label{fig:roi_label_audit}
+\end{figure}
+
+The disagreement visible in this audit reflects that patient-range metadata and mask-derived labels were not always identical. The controlled experiments therefore used non-empty anomaly masks as the final binary label source, and the audit was used to verify that ROI preprocessing did not remove positive mask evidence.
+
+\section{X-ray-only Classification}
+The strongest baseline was an ImageNet-pretrained ResNet34 encoder fine-tuned on ROI-centered X-ray inputs. With patient-level 5-fold cross-validation, the random-seed-42 experiment reached a mean best balanced accuracy of 0.919. Additional random seeds produced lower but still competitive results, indicating that the result was promising but sensitive to the limited number of curated patients used in the controlled experiments.
+
+\begin{table}[H]
+    \centering
+    \caption{Summary of selected classification experiments. Balanced accuracy is reported at the patient level.}
+    \label{tab:classification_summary}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{0.34\textwidth}|p{0.14\textwidth}|X}
+        \hline
+        \textbf{Experiment} & \textbf{Mean Best Balanced Accuracy} & \textbf{Interpretation} \\
+        \hline
+        X-ray-only ResNet34, random seed 42 & 0.919 & Strongest clean baseline under patient-level CV. \\
+        Corrected CT-mask alignment & 0.919 & Selected CT-supported multimodal model; matched the best X-ray-only baseline but did not clearly exceed it. \\
+        Region-aware multitask, random seed 42 & 0.950 & Highest single-seed score, but region prediction itself was weak; interpreted as regularization rather than reliable localization. \\
+        Region + anomaly-type auxiliary, random seed 42 & 0.919 & Added anomaly-type supervision, but classification returned to baseline level and auxiliary type prediction stayed limited. \\
+        Anomaly-type-only auxiliary, random seed 42 & 0.900 & Type labels alone did not outperform the X-ray-only baseline. \\
+        Region + CT-mask auxiliary, random seed 42 & 0.905 & Combining region supervision with CT-mask alignment did not improve over the simpler corrected CT-mask result. \\
+        Raw CT projection alignment & 0.886 & Did not improve over X-ray-only training due to domain gap and limited CT availability. \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\section{Auxiliary Region and Anomaly-type Experiments}
+Auxiliary supervision was tested after the X-ray-only classifier became stable. The motivation was that binary anomaly classification alone does not force the model to learn where the abnormality is or what type of abnormality is present. Therefore, additional heads were added on top of the shared X-ray encoder while keeping the input image-only.
+
+The region-aware model predicted three coarse anatomical regions: cervical, thoracic, and lumbar. This experiment produced the highest single-seed classification result, reaching 0.950 mean best balanced accuracy for random seed 42. However, the region head itself was weak, with low exact-match and macro-F1 scores. Exact match measures whether all predicted region labels match the target labels for a sample, while macro-F1 averages F1 scores across region classes. This means the region labels likely acted as an auxiliary regularizer for the anomaly classifier rather than producing reliable anatomical localization.
+
+Anomaly-type supervision was then tested separately and together with region labels. The anomaly-type-only experiment reached 0.900 mean best balanced accuracy, while the combined region + anomaly-type experiment reached 0.919. These results did not improve over the best region-aware run. The likely reason is that anomaly-type labels were more sparse, overlapping, and difficult to learn than coarse region labels. Therefore, region/type heads are reported as exploratory training signals, not as final clinical outputs.
+
+For this reason, there are two different meanings of final model in this thesis. As a research model, the selected CT-supported configuration is the corrected CT-mask alignment model, because it is the most defensible multimodal variant. As an auxiliary classification experiment, the region-aware classifier is also important because it improved anomaly classification in the best run. As a deployed demonstration model, the system uses the ROI-PNG anomaly classifier for practical input compatibility and does not display region predictions, because the region head was not reliable enough to present as an anatomical localization output.
+
+\section{Why Some Experiments Did Not Become the Final Model}
+Several experiments were useful even when they did not improve the final score. The segmentation direction showed that a localization-first claim would be too ambitious for the available annotation quality. The CT experiments showed that CT is scientifically meaningful, but the current paired data is asymmetric: anomaly patients have CT, while healthy patients generally do not. This makes CT useful as privileged training information, but risky as a balanced multimodal classifier.
+
+The auxiliary region and anomaly-type experiments also clarified the limits of the dataset. Region supervision improved anomaly classification in the best run, but the region head itself had low exact-match and macro-F1 scores. Therefore, the improvement is better explained as regularization than as reliable anatomical localization. Anomaly-type supervision was even more difficult because the available type labels were sparse and overlapping. For this reason, the report presents anomaly detection as the main task, treats region/type outputs as exploratory evidence rather than deployed outputs, and keeps corrected CT-mask alignment as the selected CT-supported multimodal configuration.
+
+\section{PNG Conversion and Demo Compatibility}
+The original training pipeline used NIfTI files. For deployment and demonstration, a PNG-compatible pipeline was developed and compared against the NIfTI baseline. The closest match was obtained by exporting ROI-processed PNG images and disabling an additional ROI crop during training.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.62\textheight,keepaspectratio]{roi_png_original_patients_contact_sheet.png}
+    \caption{Contact sheet of ROI-PNG exports from original patients. This was used to verify that PNG conversion preserved orientation and anatomical content.}
+    \label{fig:png_roi_contact}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{NIfTI and PNG model comparison under matched patient-level 5-fold cross-validation.}
+    \label{tab:png_vs_nifti}
+    \begin{tabular}{l|c|c}
+        \hline
+        \textbf{Model Input} & \textbf{Mean Best Balanced Accuracy} & \textbf{Mean Balanced Accuracy at 0.5} \\
+        \hline
+        NIfTI & 0.919 & Not available from saved fold logs \\
+        Full PNG export with ROI crop & 0.902 & 0.836 \\
+        ROI-PNG export, no extra ROI & 0.917 & 0.774 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The PNG model nearly matched the original NIfTI performance, but the optimal threshold varied across folds. Best-threshold balanced accuracy was used for model-selection analysis, while fixed-threshold scores are reported where available to show calibration sensitivity. Therefore, the demo uses the checkpoint-specific threshold rather than a fixed threshold of 0.5.
+
+\section{CT Projection and Multimodal Alignment}
+CT-supported experiments used training-time latent alignment. During training, an X-ray encoder was optimized for binary classification while its latent embedding was encouraged to align with a frozen CT projection or CT-mask projection embedding for patients with available CT data. Samples without CT were trained using only the classification loss. During inference, only the X-ray image is required; this is CT-guided training-time multimodal learning rather than inference-time multimodal fusion.
+
+The CT projection pipeline was improved by visual inspection. The most consistent projection setting was axis 1 with a 90-degree rotation and HU threshold 300. This produced more anatomically plausible DRR-like projections, but improved visual quality did not automatically translate into higher classification accuracy.
+
+The earlier simple CT-mask projection experiment reached 0.902 mean best balanced accuracy. After orientation correction, the corrected CT-mask alignment reached 0.919, matching the strongest X-ray-only random-seed-42 baseline but not clearly exceeding it. This corrected CT-mask alignment model was selected as the main CT-supported multimodal result of the thesis, while the PNG model was used for demonstration compatibility.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.62\textheight,keepaspectratio]{ct_hu300_axis1_rot1_512x256_contact_sheet.png}
+    \caption{HU-thresholded CT projection review sheet using HU 300, axis 1, and rotation correction. The figure was used to audit the quality of CT-derived anatomical projections.}
+    \label{fig:ct_projection_contact}
+\end{figure}
+
+\section{Internal Demo Fold Verification}
+The final demonstration model uses the fold 04 ROI-PNG checkpoint. The following base patients were held out from this model's training set: patient\_002, patient\_007, patient\_018, patient\_027, patient\_032, patient\_042, patient\_045, and patient\_052. The model correctly classified all eight original held-out samples at the checkpoint threshold of 0.2.
+
+\begin{table}[H]
+    \centering
+    \caption{Held-out fold 04 patient-level predictions used for demo verification.}
+    \label{tab:heldout_demo}
+    \begin{tabular}{l|c|c|c}
+        \hline
+        \textbf{Patient} & \textbf{Label} & \textbf{Probability} & \textbf{Prediction} \\
+        \hline
+        patient\_002 & Anomaly & 0.923 & Anomaly \\
+        patient\_007 & Anomaly & 0.963 & Anomaly \\
+        patient\_018 & Anomaly & 0.764 & Anomaly \\
+        patient\_027 & Anomaly & 0.971 & Anomaly \\
+        patient\_032 & Healthy & 0.124 & Healthy \\
+        patient\_042 & Healthy & 0.188 & Healthy \\
+        patient\_045 & Anomaly & 0.727 & Anomaly \\
+        patient\_052 & Anomaly & 0.243 & Anomaly \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Although the held-out fold result is encouraging, it should not be interpreted as external clinical validation. The test fold was drawn from the same curated dataset, and additional raw patients would need to be processed and independently evaluated before making stronger generalization claims.

@@ -1,0 +1,534 @@
+{
+  "experiment": "metadata_baseline",
+  "seed": 42,
+  "aggregate": {
+    "dummy_prior": {
+      "mean_default_balanced_accuracy": 0.5,
+      "mean_best_threshold_balanced_accuracy": 0.5,
+      "folds": [
+        {
+          "model": "dummy_prior",
+          "default_threshold_metrics": {
+            "accuracy": 0.7,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.7,
+            "recall": 1.0,
+            "f1": 0.8235294117647058,
+            "tp": 7,
+            "tn": 0,
+            "fp": 3,
+            "fn": 0,
+            "n": 10
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 0.7,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.7,
+            "recall": 1.0,
+            "f1": 0.8235294117647058,
+            "tp": 7,
+            "tn": 0,
+            "fp": 3,
+            "fn": 0,
+            "n": 10
+          }
+        },
+        {
+          "model": "dummy_prior",
+          "default_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "dummy_prior",
+          "default_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "dummy_prior",
+          "default_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "dummy_prior",
+          "default_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.5,
+            "auc": 0.5,
+            "sensitivity": 1.0,
+            "specificity": 0.0,
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "tp": 6,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0,
+            "n": 8
+          }
+        }
+      ]
+    },
+    "prompt_text": {
+      "mean_default_balanced_accuracy": 1.0,
+      "mean_best_threshold_balanced_accuracy": 1.0,
+      "folds": [
+        {
+          "model": "prompt_text",
+          "default_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 3,
+            "fp": 0,
+            "fn": 0,
+            "n": 10
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 7,
+            "tn": 3,
+            "fp": 0,
+            "fn": 0,
+            "n": 10
+          }
+        },
+        {
+          "model": "prompt_text",
+          "default_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "prompt_text",
+          "default_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "prompt_text",
+          "default_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          }
+        },
+        {
+          "model": "prompt_text",
+          "default_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          },
+          "best_threshold": 0.05,
+          "best_threshold_metrics": {
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "auc": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 6,
+            "tn": 2,
+            "fp": 0,
+            "fn": 0,
+            "n": 8
+          }
+        }
+      ]
+    },
+    "patient_number_aug_counts": {
+      "mean_default_balanced_accuracy": 0.8023809523809524,
+      "mean_best_threshold_balanced_accuracy": 0.8523809523809524,
+      "folds": [
+        {
+          "model": "patient_number_aug_counts",
+          "default_threshold_metrics": {
+            "accuracy": 0.9,
+            "balanced_accuracy": 0.9285714285714286,
+            "auc": 0.8571428571428571,
+            "sensitivity": 0.8571428571428571,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.8571428571428571,
+            "f1": 0.923076923076923,
+            "tp": 6,
+            "tn": 3,
+            "fp": 0,
+            "fn": 1,
+            "n": 10
+          },
+          "best_threshold": 0.5,
+          "best_threshold_metrics": {
+            "accuracy": 0.9,
+            "balanced_accuracy": 0.9285714285714286,
+            "auc": 0.8571428571428571,
+            "sensitivity": 0.8571428571428571,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.8571428571428571,
+            "f1": 0.923076923076923,
+            "tp": 6,
+            "tn": 3,
+            "fp": 0,
+            "fn": 1,
+            "n": 10
+          }
+        },
+        {
+          "model": "patient_number_aug_counts",
+          "default_threshold_metrics": {
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.9166666666666667,
+            "auc": 0.8333333333333334,
+            "sensitivity": 0.8333333333333334,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091,
+            "tp": 5,
+            "tn": 2,
+            "fp": 0,
+            "fn": 1,
+            "n": 8
+          },
+          "best_threshold": 0.5,
+          "best_threshold_metrics": {
+            "accuracy": 0.875,
+            "balanced_accuracy": 0.9166666666666667,
+            "auc": 0.8333333333333334,
+            "sensitivity": 0.8333333333333334,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091,
+            "tp": 5,
+            "tn": 2,
+            "fp": 0,
+            "fn": 1,
+            "n": 8
+          }
+        },
+        {
+          "model": "patient_number_aug_counts",
+          "default_threshold_metrics": {
+            "accuracy": 0.625,
+            "balanced_accuracy": 0.75,
+            "auc": 0.5,
+            "sensitivity": 0.5,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "tp": 3,
+            "tn": 2,
+            "fp": 0,
+            "fn": 3,
+            "n": 8
+          },
+          "best_threshold": 0.5,
+          "best_threshold_metrics": {
+            "accuracy": 0.625,
+            "balanced_accuracy": 0.75,
+            "auc": 0.5,
+            "sensitivity": 0.5,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "tp": 3,
+            "tn": 2,
+            "fp": 0,
+            "fn": 3,
+            "n": 8
+          }
+        },
+        {
+          "model": "patient_number_aug_counts",
+          "default_threshold_metrics": {
+            "accuracy": 0.625,
+            "balanced_accuracy": 0.5833333333333333,
+            "auc": 0.6666666666666666,
+            "sensitivity": 0.6666666666666666,
+            "specificity": 0.5,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "f1": 0.7272727272727272,
+            "tp": 4,
+            "tn": 1,
+            "fp": 1,
+            "fn": 2,
+            "n": 8
+          },
+          "best_threshold": 0.55,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.8333333333333333,
+            "auc": 0.6666666666666666,
+            "sensitivity": 0.6666666666666666,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "tp": 4,
+            "tn": 2,
+            "fp": 0,
+            "fn": 2,
+            "n": 8
+          }
+        },
+        {
+          "model": "patient_number_aug_counts",
+          "default_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.8333333333333333,
+            "auc": 0.6666666666666666,
+            "sensitivity": 0.6666666666666666,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "tp": 4,
+            "tn": 2,
+            "fp": 0,
+            "fn": 2,
+            "n": 8
+          },
+          "best_threshold": 0.5,
+          "best_threshold_metrics": {
+            "accuracy": 0.75,
+            "balanced_accuracy": 0.8333333333333333,
+            "auc": 0.6666666666666666,
+            "sensitivity": 0.6666666666666666,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "tp": 4,
+            "tn": 2,
+            "fp": 0,
+            "fn": 2,
+            "n": 8
+          }
+        }
+      ]
+    }
+  }
+}

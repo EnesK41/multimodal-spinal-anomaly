@@ -1,0 +1,68 @@
+{
+  "checkpoint": "checkpoints/best_model_roi_045_keep_scoliosis.pth",
+  "checkpoint_epoch": 4,
+  "checkpoint_best_val_dice": 0.06857342474168439,
+  "val_patients": [
+    "patient_004",
+    "patient_028",
+    "patient_045"
+  ],
+  "indices_evaluated": 3,
+  "original_only_val": true,
+  "roi_width_ratio": 0.45,
+  "image_size": [
+    1024,
+    512
+  ],
+  "fixed_threshold_summary": {
+    "threshold": 0.3,
+    "n": 3,
+    "positive_n": 3,
+    "healthy_n": 0,
+    "positive_mean_dice": 0.04096712117438061,
+    "positive_mean_iou": 0.02117047256473339,
+    "positive_mean_precision": 0.023378958182824067,
+    "positive_mean_recall": 0.2131151450727067,
+    "healthy_empty_specificity": null,
+    "healthy_false_mask_rate": null,
+    "mean_pred_pixels_positive": 6894.333333333333,
+    "mean_target_pixels_positive": 1235.0,
+    "mean_pred_pixels_healthy": null
+  },
+  "best_threshold_summary": {
+    "threshold": 0.05,
+    "n": 3,
+    "positive_n": 3,
+    "healthy_n": 0,
+    "positive_mean_dice": 0.06775588074042893,
+    "positive_mean_iou": 0.03507867687343588,
+    "positive_mean_precision": 0.036964611841556395,
+    "positive_mean_recall": 0.4635765021286855,
+    "healthy_empty_specificity": null,
+    "healthy_false_mask_rate": null,
+    "mean_pred_pixels_positive": 14438.666666666666,
+    "mean_target_pixels_positive": 1235.0,
+    "mean_pred_pixels_healthy": null
+  },
+  "thresholds": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ]
+}

@@ -1,0 +1,1170 @@
+{
+  "experiment": "region_multitask",
+  "seed": 7,
+  "folds": 5,
+  "region_names": [
+    "cervical",
+    "thoracic",
+    "lumbar"
+  ],
+  "mean_best_balanced_accuracy": 0.8738095238095239,
+  "mean_region_exact_match": 0.13333333333333333,
+  "mean_region_macro_f1": 0.13587301587301587,
+  "args": {
+    "data_dir": "data/augmented_patients",
+    "csv_file": "data/train_labels_augmented.csv",
+    "epochs": 5,
+    "batch_size": 8,
+    "folds": 5,
+    "seed": 7,
+    "roi_width_ratio": 0.45,
+    "region_loss_weight": 0.2,
+    "encoder_lr": 1e-05,
+    "head_lr": 5e-05,
+    "weight_decay": 0.0005,
+    "dropout": 0.5,
+    "min_save_epoch": 1,
+    "early_stopping_patience": 3,
+    "num_workers": 0,
+    "pretrained_encoder": true,
+    "include_val_augmentations": false
+  },
+  "results": [
+    {
+      "fold": 1,
+      "run_name": "region_multitask_roi045_fold_01_seed7",
+      "val_patients": [
+        "patient_004",
+        "patient_008",
+        "patient_011",
+        "patient_016",
+        "patient_021",
+        "patient_032",
+        "patient_037",
+        "patient_041",
+        "patient_056",
+        "patient_059"
+      ],
+      "best_epoch": 4,
+      "best_score": 0.7857142857142857,
+      "best_threshold": 0.55,
+      "default_threshold_metrics": {
+        "accuracy": 0.6,
+        "balanced_accuracy": 0.5238095238095238,
+        "auc": 0.7142857142857143,
+        "sensitivity": 0.7142857142857143,
+        "specificity": 0.3333333333333333,
+        "precision": 0.7142857142857143,
+        "recall": 0.7142857142857143,
+        "f1": 0.7142857142857143,
+        "tp": 5,
+        "tn": 1,
+        "fp": 2,
+        "fn": 2,
+        "n": 10
+      },
+      "best_threshold_metrics": {
+        "accuracy": 0.7,
+        "balanced_accuracy": 0.7857142857142857,
+        "auc": 0.7142857142857143,
+        "sensitivity": 0.5714285714285714,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.5714285714285714,
+        "f1": 0.7272727272727273,
+        "tp": 4,
+        "tn": 3,
+        "fp": 0,
+        "fn": 3,
+        "n": 10
+      },
+      "region_metrics": {
+        "n_known": 7,
+        "exact_match": 0.0,
+        "macro_f1": 0.09523809523809525,
+        "per_region": {
+          "cervical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 5,
+            "fp": 0,
+            "fn": 2
+          },
+          "thoracic": {
+            "precision": 0.3333333333333333,
+            "recall": 0.25,
+            "f1": 0.28571428571428575,
+            "tp": 1,
+            "tn": 1,
+            "fp": 2,
+            "fn": 3
+          },
+          "lumbar": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 4,
+            "fp": 0,
+            "fn": 3
+          }
+        }
+      },
+      "val_rows": [
+        {
+          "patient_id": "patient_004",
+          "base_patient_id": "patient_004",
+          "label": 1.0,
+          "prob": 0.696562647819519,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4048817455768585,
+            0.5119295120239258,
+            0.3620035946369171
+          ]
+        },
+        {
+          "patient_id": "patient_008",
+          "base_patient_id": "patient_008",
+          "label": 1.0,
+          "prob": 0.8073626756668091,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.40829864144325256,
+            0.5277835726737976,
+            0.3459145128726959
+          ]
+        },
+        {
+          "patient_id": "patient_011",
+          "base_patient_id": "patient_011",
+          "label": 1.0,
+          "prob": 0.5029640793800354,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.4072108864784241,
+            0.4755350649356842,
+            0.37853965163230896
+          ]
+        },
+        {
+          "patient_id": "patient_016",
+          "base_patient_id": "patient_016",
+          "label": 1.0,
+          "prob": 0.4745871126651764,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.41132473945617676,
+            0.47711828351020813,
+            0.3876535892486572
+          ]
+        },
+        {
+          "patient_id": "patient_021",
+          "base_patient_id": "patient_021",
+          "label": 1.0,
+          "prob": 0.42709121108055115,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.43403512239456177,
+            0.4988948702812195,
+            0.35700178146362305
+          ]
+        },
+        {
+          "patient_id": "patient_032",
+          "base_patient_id": "patient_032",
+          "label": 0.0,
+          "prob": 0.307944655418396,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.42254242300987244,
+            0.4879550039768219,
+            0.4042451083660126
+          ]
+        },
+        {
+          "patient_id": "patient_037",
+          "base_patient_id": "patient_037",
+          "label": 0.0,
+          "prob": 0.5369649529457092,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.39827755093574524,
+            0.5021811127662659,
+            0.373543918132782
+          ]
+        },
+        {
+          "patient_id": "patient_041",
+          "base_patient_id": "patient_041",
+          "label": 0.0,
+          "prob": 0.5356040596961975,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4294820725917816,
+            0.46600696444511414,
+            0.3624719977378845
+          ]
+        },
+        {
+          "patient_id": "patient_056",
+          "base_patient_id": "patient_056",
+          "label": 1.0,
+          "prob": 0.6797661781311035,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            1.0
+          ],
+          "region_prob": [
+            0.4001624286174774,
+            0.49782663583755493,
+            0.3443877696990967
+          ]
+        },
+        {
+          "patient_id": "patient_059",
+          "base_patient_id": "patient_059",
+          "label": 1.0,
+          "prob": 0.7087973356246948,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3960414528846741,
+            0.530663013458252,
+            0.3548792004585266
+          ]
+        }
+      ],
+      "checkpoint": "checkpoints\\region_multitask_roi045_fold_01_seed7.pth"
+    },
+    {
+      "fold": 2,
+      "run_name": "region_multitask_roi045_fold_02_seed7",
+      "val_patients": [
+        "patient_003",
+        "patient_010",
+        "patient_012",
+        "patient_023",
+        "patient_027",
+        "patient_036",
+        "patient_039",
+        "patient_055"
+      ],
+      "best_epoch": 1,
+      "best_score": 0.75,
+      "best_threshold": 0.55,
+      "default_threshold_metrics": {
+        "accuracy": 0.75,
+        "balanced_accuracy": 0.5,
+        "auc": 0.8333333333333333,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "tp": 6,
+        "tn": 0,
+        "fp": 2,
+        "fn": 0,
+        "n": 8
+      },
+      "best_threshold_metrics": {
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.75,
+        "auc": 0.8333333333333333,
+        "sensitivity": 0.5,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666,
+        "tp": 3,
+        "tn": 2,
+        "fp": 0,
+        "fn": 3,
+        "n": 8
+      },
+      "region_metrics": {
+        "n_known": 6,
+        "exact_match": 0.0,
+        "macro_f1": 0.0,
+        "per_region": {
+          "cervical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 6,
+            "fp": 0,
+            "fn": 0
+          },
+          "thoracic": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 1,
+            "fp": 0,
+            "fn": 5
+          },
+          "lumbar": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 5,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "val_rows": [
+        {
+          "patient_id": "patient_003",
+          "base_patient_id": "patient_003",
+          "label": 1.0,
+          "prob": 0.5069214701652527,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4292762875556946,
+            0.4080262780189514,
+            0.4418776035308838
+          ]
+        },
+        {
+          "patient_id": "patient_010",
+          "base_patient_id": "patient_010",
+          "label": 1.0,
+          "prob": 0.5290014743804932,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.42503899335861206,
+            0.47070950269699097,
+            0.4576500356197357
+          ]
+        },
+        {
+          "patient_id": "patient_012",
+          "base_patient_id": "patient_012",
+          "label": 1.0,
+          "prob": 0.5465403199195862,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4451764225959778,
+            0.4572833478450775,
+            0.4431283175945282
+          ]
+        },
+        {
+          "patient_id": "patient_023",
+          "base_patient_id": "patient_023",
+          "label": 1.0,
+          "prob": 0.552232563495636,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.42331191897392273,
+            0.45848697423934937,
+            0.4368531405925751
+          ]
+        },
+        {
+          "patient_id": "patient_027",
+          "base_patient_id": "patient_027",
+          "label": 1.0,
+          "prob": 0.5573762655258179,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.40803563594818115,
+            0.4563949704170227,
+            0.43855494260787964
+          ]
+        },
+        {
+          "patient_id": "patient_036",
+          "base_patient_id": "patient_036",
+          "label": 0.0,
+          "prob": 0.503782331943512,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4367462396621704,
+            0.4338133931159973,
+            0.4720754027366638
+          ]
+        },
+        {
+          "patient_id": "patient_039",
+          "base_patient_id": "patient_039",
+          "label": 0.0,
+          "prob": 0.5355381965637207,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4086664617061615,
+            0.41051438450813293,
+            0.4149233400821686
+          ]
+        },
+        {
+          "patient_id": "patient_055",
+          "base_patient_id": "patient_055",
+          "label": 1.0,
+          "prob": 0.5547922253608704,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.447598397731781,
+            0.49328839778900146,
+            0.4348571002483368
+          ]
+        }
+      ],
+      "checkpoint": "checkpoints\\region_multitask_roi045_fold_02_seed7.pth"
+    },
+    {
+      "fold": 3,
+      "run_name": "region_multitask_roi045_fold_03_seed7",
+      "val_patients": [
+        "patient_018",
+        "patient_028",
+        "patient_029",
+        "patient_034",
+        "patient_038",
+        "patient_045",
+        "patient_049",
+        "patient_058"
+      ],
+      "best_epoch": 4,
+      "best_score": 0.9166666666666667,
+      "best_threshold": 0.45,
+      "default_threshold_metrics": {
+        "accuracy": 0.625,
+        "balanced_accuracy": 0.75,
+        "auc": 0.9166666666666667,
+        "sensitivity": 0.5,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666,
+        "tp": 3,
+        "tn": 2,
+        "fp": 0,
+        "fn": 3,
+        "n": 8
+      },
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 0.9166666666666667,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "region_metrics": {
+        "n_known": 6,
+        "exact_match": 0.3333333333333333,
+        "macro_f1": 0.26666666666666666,
+        "per_region": {
+          "cervical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 3,
+            "fp": 0,
+            "fn": 3
+          },
+          "thoracic": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "tp": 4,
+            "tn": 0,
+            "fp": 2,
+            "fn": 0
+          },
+          "lumbar": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 5,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "val_rows": [
+        {
+          "patient_id": "patient_018",
+          "base_patient_id": "patient_018",
+          "label": 1.0,
+          "prob": 0.4517921805381775,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3372378349304199,
+            0.5355573296546936,
+            0.3381196856498718
+          ]
+        },
+        {
+          "patient_id": "patient_028",
+          "base_patient_id": "patient_028",
+          "label": 1.0,
+          "prob": 0.6026694774627686,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.2968553900718689,
+            0.5642185211181641,
+            0.37897995114326477
+          ]
+        },
+        {
+          "patient_id": "patient_029",
+          "base_patient_id": "patient_029",
+          "label": 1.0,
+          "prob": 0.49085408449172974,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.2988230884075165,
+            0.5782356262207031,
+            0.3546907603740692
+          ]
+        },
+        {
+          "patient_id": "patient_034",
+          "base_patient_id": "patient_034",
+          "label": 0.0,
+          "prob": 0.43402931094169617,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.31421852111816406,
+            0.5338007807731628,
+            0.33606821298599243
+          ]
+        },
+        {
+          "patient_id": "patient_038",
+          "base_patient_id": "patient_038",
+          "label": 0.0,
+          "prob": 0.308412104845047,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.29980170726776123,
+            0.5392225384712219,
+            0.30951955914497375
+          ]
+        },
+        {
+          "patient_id": "patient_045",
+          "base_patient_id": "patient_045",
+          "label": 1.0,
+          "prob": 0.396503210067749,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.29981502890586853,
+            0.5419425964355469,
+            0.32978734374046326
+          ]
+        },
+        {
+          "patient_id": "patient_049",
+          "base_patient_id": "patient_049",
+          "label": 1.0,
+          "prob": 0.7103068828582764,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3267366886138916,
+            0.5241482257843018,
+            0.38447296619415283
+          ]
+        },
+        {
+          "patient_id": "patient_058",
+          "base_patient_id": "patient_058",
+          "label": 1.0,
+          "prob": 0.7207733392715454,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3337153494358063,
+            0.5619706511497498,
+            0.36638015508651733
+          ]
+        }
+      ],
+      "checkpoint": "checkpoints\\region_multitask_roi045_fold_03_seed7.pth"
+    },
+    {
+      "fold": 4,
+      "run_name": "region_multitask_roi045_fold_04_seed7",
+      "val_patients": [
+        "patient_002",
+        "patient_006",
+        "patient_009",
+        "patient_020",
+        "patient_040",
+        "patient_042",
+        "patient_052",
+        "patient_061"
+      ],
+      "best_epoch": 5,
+      "best_score": 0.9166666666666667,
+      "best_threshold": 0.35,
+      "default_threshold_metrics": {
+        "accuracy": 0.75,
+        "balanced_accuracy": 0.8333333333333333,
+        "auc": 0.9166666666666667,
+        "sensitivity": 0.6666666666666666,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "tp": 4,
+        "tn": 2,
+        "fp": 0,
+        "fn": 2,
+        "n": 8
+      },
+      "best_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.9166666666666667,
+        "auc": 0.9166666666666667,
+        "sensitivity": 0.8333333333333334,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 0.8333333333333334,
+        "f1": 0.9090909090909091,
+        "tp": 5,
+        "tn": 2,
+        "fp": 0,
+        "fn": 1,
+        "n": 8
+      },
+      "region_metrics": {
+        "n_known": 6,
+        "exact_match": 0.0,
+        "macro_f1": 0.09523809523809523,
+        "per_region": {
+          "cervical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 3,
+            "fp": 1,
+            "fn": 2
+          },
+          "thoracic": {
+            "precision": 0.16666666666666666,
+            "recall": 1.0,
+            "f1": 0.2857142857142857,
+            "tp": 1,
+            "tn": 0,
+            "fp": 5,
+            "fn": 0
+          },
+          "lumbar": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 2,
+            "fp": 0,
+            "fn": 4
+          }
+        }
+      },
+      "val_rows": [
+        {
+          "patient_id": "patient_002",
+          "base_patient_id": "patient_002",
+          "label": 1.0,
+          "prob": 0.8957027196884155,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3305485248565674,
+            0.6703692078590393,
+            0.24150048196315765
+          ]
+        },
+        {
+          "patient_id": "patient_006",
+          "base_patient_id": "patient_006",
+          "label": 1.0,
+          "prob": 0.08840901404619217,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.5509490370750427,
+            0.5888367891311646,
+            0.25578588247299194
+          ]
+        },
+        {
+          "patient_id": "patient_009",
+          "base_patient_id": "patient_009",
+          "label": 1.0,
+          "prob": 0.5785419344902039,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.4146271049976349,
+            0.6425955891609192,
+            0.25474992394447327
+          ]
+        },
+        {
+          "patient_id": "patient_020",
+          "base_patient_id": "patient_020",
+          "label": 1.0,
+          "prob": 0.9417381882667542,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.27980950474739075,
+            0.6991010904312134,
+            0.2711544334888458
+          ]
+        },
+        {
+          "patient_id": "patient_040",
+          "base_patient_id": "patient_040",
+          "label": 0.0,
+          "prob": 0.33794987201690674,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.4448995590209961,
+            0.6125391125679016,
+            0.22236014902591705
+          ]
+        },
+        {
+          "patient_id": "patient_042",
+          "base_patient_id": "patient_042",
+          "label": 0.0,
+          "prob": 0.056086041033267975,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.5225703716278076,
+            0.5359424948692322,
+            0.27991431951522827
+          ]
+        },
+        {
+          "patient_id": "patient_052",
+          "base_patient_id": "patient_052",
+          "label": 1.0,
+          "prob": 0.3899209797382355,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.4705345928668976,
+            0.6421862244606018,
+            0.21119660139083862
+          ]
+        },
+        {
+          "patient_id": "patient_061",
+          "base_patient_id": "patient_061",
+          "label": 1.0,
+          "prob": 0.9606119394302368,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.31475234031677246,
+            0.661651074886322,
+            0.28847602009773254
+          ]
+        }
+      ],
+      "checkpoint": "checkpoints\\region_multitask_roi045_fold_04_seed7.pth"
+    },
+    {
+      "fold": 5,
+      "run_name": "region_multitask_roi045_fold_05_seed7",
+      "val_patients": [
+        "patient_007",
+        "patient_022",
+        "patient_025",
+        "patient_026",
+        "patient_030",
+        "patient_033",
+        "patient_035",
+        "patient_060"
+      ],
+      "best_epoch": 5,
+      "best_score": 1.0,
+      "best_threshold": 0.55,
+      "default_threshold_metrics": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.75,
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 0.5,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1": 0.923076923076923,
+        "tp": 6,
+        "tn": 1,
+        "fp": 1,
+        "fn": 0,
+        "n": 8
+      },
+      "best_threshold_metrics": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 6,
+        "tn": 2,
+        "fp": 0,
+        "fn": 0,
+        "n": 8
+      },
+      "region_metrics": {
+        "n_known": 6,
+        "exact_match": 0.3333333333333333,
+        "macro_f1": 0.2222222222222222,
+        "per_region": {
+          "cervical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 3,
+            "fp": 0,
+            "fn": 3
+          },
+          "thoracic": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "tp": 3,
+            "tn": 0,
+            "fp": 3,
+            "fn": 0
+          },
+          "lumbar": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "tp": 0,
+            "tn": 5,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "val_rows": [
+        {
+          "patient_id": "patient_007",
+          "base_patient_id": "patient_007",
+          "label": 1.0,
+          "prob": 0.9373065829277039,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.27392375469207764,
+            0.5845762491226196,
+            0.34876006841659546
+          ]
+        },
+        {
+          "patient_id": "patient_022",
+          "base_patient_id": "patient_022",
+          "label": 1.0,
+          "prob": 0.8832743763923645,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "region_prob": [
+            0.3083480894565582,
+            0.540579617023468,
+            0.32983970642089844
+          ]
+        },
+        {
+          "patient_id": "patient_025",
+          "base_patient_id": "patient_025",
+          "label": 1.0,
+          "prob": 0.9024711847305298,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.28664836287498474,
+            0.5320066213607788,
+            0.3455352485179901
+          ]
+        },
+        {
+          "patient_id": "patient_026",
+          "base_patient_id": "patient_026",
+          "label": 1.0,
+          "prob": 0.5855082869529724,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.31835946440696716,
+            0.5846520066261292,
+            0.3714151084423065
+          ]
+        },
+        {
+          "patient_id": "patient_030",
+          "base_patient_id": "patient_030",
+          "label": 1.0,
+          "prob": 0.8364746570587158,
+          "region_known": 1.0,
+          "region_target": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3025240898132324,
+            0.5720068216323853,
+            0.35352426767349243
+          ]
+        },
+        {
+          "patient_id": "patient_033",
+          "base_patient_id": "patient_033",
+          "label": 0.0,
+          "prob": 0.18976590037345886,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.3902532756328583,
+            0.5571179389953613,
+            0.38774991035461426
+          ]
+        },
+        {
+          "patient_id": "patient_035",
+          "base_patient_id": "patient_035",
+          "label": 0.0,
+          "prob": 0.5299482345581055,
+          "region_known": 0.0,
+          "region_target": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "region_prob": [
+            0.33138415217399597,
+            0.5719670057296753,
+            0.3255161941051483
+          ]
+        },
+        {
+          "patient_id": "patient_060",
+          "base_patient_id": "patient_060",
+          "label": 1.0,
+          "prob": 0.8822363018989563,
+          "region_known": 1.0,
+          "region_target": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "region_prob": [
+            0.27246400713920593,
+            0.5820603966712952,
+            0.37146615982055664
+          ]
+        }
+      ],
+      "checkpoint": "checkpoints\\region_multitask_roi045_fold_05_seed7.pth"
+    }
+  ]
+}

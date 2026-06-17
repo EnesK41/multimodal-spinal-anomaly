@@ -1,0 +1,11 @@
+\begin{abstract}
+    This thesis investigates pediatric spinal anomaly detection from frontal X-ray images. X-rays were selected as the main input modality because they are practical, widely available, and commonly used for initial spinal evaluation. CT and MRI provide complementary anatomical information, but CT introduces additional radiation burden that is not ideal for repeated pediatric screening, while MRI is less practical for routine frontal bony-alignment assessment.
+
+The study develops a controlled binary classification pipeline using patient-level cross-validation, labels derived from non-empty anomaly masks, prompt scrubbing, ROI-centered preprocessing, and an ImageNet-pretrained ResNet34 encoder. The usable experimental set is treated as a curated subset of the available data, since additional raw patients require manual quality control before reliable training.
+
+The strongest X-ray-only model achieved 0.919 mean best balanced accuracy under patient-level 5-fold cross-validation. A PNG-compatible cross-validation pipeline reached a comparable score of 0.917. CT-supported latent alignment, region-aware multitask learning, anomaly-type supervision, and segmentation-based alternatives were also explored. CT was used only as training-time auxiliary supervision; the final inference model remains X-ray-only.
+
+The system is presented as a research prototype rather than a clinical diagnostic tool. The results emphasize that leakage control, preprocessing validation, and careful interpretation are essential in small curated medical imaging datasets.
+
+\textbf{Keywords:} Spinal anomaly detection, X-ray classification, CT alignment, ResNet34, patient-level cross-validation, medical image analysis.
+\end{abstract}

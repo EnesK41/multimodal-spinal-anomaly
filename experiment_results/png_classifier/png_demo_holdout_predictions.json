@@ -1,0 +1,97 @@
+{
+  "checkpoint": "checkpoints\\png_full_demo_holdout_seed42_best.pth",
+  "best_threshold": 0.9,
+  "holdout_rows_csv": "experiment_results\\png_classifier\\png_demo_holdout_predictions.csv",
+  "metrics_threshold_0_5": {
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "tp": 3,
+    "tn": 0,
+    "fp": 3,
+    "fn": 0,
+    "n": 6
+  },
+  "metrics_best_threshold": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 3,
+    "tn": 3,
+    "fp": 0,
+    "fn": 0,
+    "n": 6
+  },
+  "rows": [
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_002",
+      "base_patient_id": "patient_002",
+      "label": 1,
+      "probability": 0.9341599941253662,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 1,
+      "best_threshold": 0.9
+    },
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_004",
+      "base_patient_id": "patient_004",
+      "label": 1,
+      "probability": 0.9456796646118164,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 1,
+      "best_threshold": 0.9
+    },
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_028",
+      "base_patient_id": "patient_028",
+      "label": 1,
+      "probability": 0.9155510067939758,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 1,
+      "best_threshold": 0.9
+    },
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_038",
+      "base_patient_id": "patient_038",
+      "label": 0,
+      "probability": 0.6017308831214905,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 0,
+      "best_threshold": 0.9
+    },
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_040",
+      "base_patient_id": "patient_040",
+      "label": 0,
+      "probability": 0.8897062540054321,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 0,
+      "best_threshold": 0.9
+    },
+    {
+      "split": "demo_holdout_not_train",
+      "patient_id": "patient_042",
+      "base_patient_id": "patient_042",
+      "label": 0,
+      "probability": 0.7313026189804077,
+      "prediction_threshold_0_5": 1,
+      "prediction_best_threshold": 0,
+      "best_threshold": 0.9
+    }
+  ]
+}

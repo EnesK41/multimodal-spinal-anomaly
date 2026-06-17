@@ -1,40 +1,91 @@
+# Python caches and environments
 __pycache__/
 *.py[cod]
 *$py.class
-
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
 venv/
 env/
 .env
-.venv
+.env.*
 
-*.pth
-*.pt
-*.ckpt
-*.h5
-runs/
-logs/
-wandb/
-
-data/
-dataset/
-images/
-*.dcm
-*.nii
-*.nii.gz
-*.mha
-*.png
-*.jpg
-*.jpeg
-
+# IDE / OS files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 
-.ipynb_checkpoints/
+# Training outputs and model weights
+checkpoints/
+runs/
+logs/
+wandb/
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.onnx
 
-/Literatür
-*.pdf
-*.docx
+# Private medical data and generated patient previews
+data/
+dataset/
+images/
+data_backup_before_rotate_original_patients_*/
+evidence/
+*.dcm
 *.csv
-*.json
+*.nii
+*.nii.gz
+*.mha
+*.nrrd
+*.png
+*.jpg
+*.jpeg
+
+# Keep lightweight non-image experiment summaries available for Git
+!experiment_results/
+!experiment_results/**/*.json
+!experiment_results/**/*.csv
+!experiment_results/**/*.md
+
+# Documents, archives, and local presentation drafts
+*.pptx
+*.docx
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.pdf
+Literat*/
+
+# Keep LaTeX report source, ignore generated build files
+!Spinal_Anomaly_Detection_Report/
+!Spinal_Anomaly_Detection_Report/**/*.tex
+!Spinal_Anomaly_Detection_Report/**/*.bib
+!Spinal_Anomaly_Detection_Report/**/*.sty
+!Spinal_Anomaly_Detection_Report/**/*.cls
+!Spinal_Anomaly_Detection_Report/**/*.md
+!Spinal_Anomaly_Detection_Report/Imgs/
+!Spinal_Anomaly_Detection_Report/Imgs/gtu_logo.jpg
+Spinal_Anomaly_Detection_Report/*.aux
+Spinal_Anomaly_Detection_Report/*.bbl
+Spinal_Anomaly_Detection_Report/*.bcf
+Spinal_Anomaly_Detection_Report/*.blg
+Spinal_Anomaly_Detection_Report/*.fdb_latexmk
+Spinal_Anomaly_Detection_Report/*.fls
+Spinal_Anomaly_Detection_Report/*.lof
+Spinal_Anomaly_Detection_Report/*.log
+Spinal_Anomaly_Detection_Report/*.lot
+Spinal_Anomaly_Detection_Report/*.out
+Spinal_Anomaly_Detection_Report/*.run.xml
+Spinal_Anomaly_Detection_Report/*.synctex.gz
+Spinal_Anomaly_Detection_Report/*.toc
+
+# Local notes / scratch files
+feedback.txt
+oldtests.txt
+PROJECT_CONTEXT.md
+PROJECT_CONTEXT.local.md

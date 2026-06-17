@@ -1,0 +1,78 @@
+\chapter{Materials and Methodology}
+\label{ch:method}
+
+\section{Dataset Description}
+The original experiment-ready dataset was small, containing approximately 50--60 unique patients in the first segmentation experiments. Later, additional raw patient data became available, but those cases required manual inspection, modality selection, orientation checks, segmentation conversion, and naming normalization before they could be used safely. Therefore, the reported experiments use the curated subset that was fully processed and traceable.
+
+After cleaning, filtering, and augmentation, the working classification dataset contained approximately 252 samples from 42 unique base patients. Among these, 31 base patients were anomaly-positive and 11 were healthy or empty. The limitation discussed in this thesis therefore refers to the number of clean, label-usable, experiment-ready patients, not to the total number of raw files that may exist in the hospital export.
+
+Some patients have augmented versions named using the pattern \texttt{patient\_004\_aug1}, \texttt{patient\_004\_aug2}, and so on. These augmented samples were never split independently. Instead, the base patient identifier was used for all train/validation split decisions.
+
+\begin{table}[H]
+    \centering
+    \caption{Cleaned classification dataset summary.}
+    \label{tab:dataset_summary}
+    \begin{tabular}{l|c}
+        \hline
+        \textbf{Property} & \textbf{Count} \\
+        \hline
+        Total samples & 252 \\
+        Positive samples & 186 \\
+        Healthy/empty samples & 66 \\
+        Unique base patients & 42 \\
+        Positive base patients & 31 \\
+        Healthy base patients & 11 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Patient-level Splitting}
+The primary evaluation protocol was 5-fold patient-level cross-validation. If a base patient was assigned to the validation fold, all augmented versions of that patient were excluded from training. Validation used original samples only. This design was chosen to prevent augmentation leakage, where a model could otherwise see nearly identical versions of a validation patient during training.
+
+\section{Label Strategy}
+Two possible label sources were considered: patient metadata and non-empty anomaly masks. Since metadata and prompts were found to contain diagnostic shortcuts, the final training labels were derived from mask positivity. If an X-ray mask contained positive pixels, the sample was labeled as anomaly-positive. Otherwise, it was labeled as healthy/empty, meaning that no positive anomaly mask was present.
+
+\section{Preprocessing and ROI Extraction}
+All X-ray images were normalized and resized with aspect-ratio preserving padding. A body-centered ROI crop was then applied to reduce irrelevant background and focus the model on the spine region. The most successful ROI width ratio for the X-ray-only classifier was 0.45.
+
+\section{Segmentation Exploration}
+The project initially attempted to solve the problem as a segmentation task, because localizing abnormal vertebral regions would provide a more clinically interpretable output than a binary image-level label. The target masks represented anomaly regions rather than individual vertebra labels. The initial model followed an encoder-decoder design with an X-ray encoder, a U-Net-like mask decoder, skip connections, and binary anomaly masks as targets.
+
+Several segmentation-oriented trials were investigated. Full-image segmentation was trained first, but the anomaly regions were very small compared with the complete X-ray image. This made the loss dominated by background pixels and irrelevant anatomy. BCE loss, Dice loss, and hybrid BCE+Dice loss were tested. Dice loss addressed class imbalance in theory, while BCE stabilized pixel-wise optimization, but neither solved the core validation problem: the model often predicted empty masks or highlighted wrong bright anatomical/artifact regions.
+
+The early segmentation prototype also included a CLIP-style text comparison module for diagnosis descriptions. This was not simply ignored; it was removed from the final pipeline after leakage analysis showed that diagnostic text could contain the answer directly. The final models therefore use image input only, while text-derived information is used only indirectly for auxiliary targets when appropriate.
+
+Stronger decoder variants and attention-style modifications were also considered. These changes improved training behavior in some runs but did not produce reliable held-out localization. Patch-based training was explored to increase the anomaly-to-background ratio, but many sampled patches did not contain anomaly evidence and sliding-window style predictions were fragmented or misplaced. ROI-based segmentation was then attempted using a body-centered crop. ROI coverage analysis helped select a practical width ratio around 0.45, and this slightly improved validation Dice compared with full-image training, but the masks were still not reliable enough for clinical localization.
+
+Spatial consistency was another limiting factor. Image orientation, resizing, mask conversion, and X-ray/mask alignment had to be checked repeatedly. Some patients had poor field-of-view, severe deformity, or imperfect image-mask correspondence. External spine or vertebra localization tools were also considered for a more geometric pipeline, but they were not reliable on the heterogeneous local images.
+
+This direction was eventually not used as the final model for three reasons. First, the number of reliable annotated patients was too limited for a strong pixel-level claim. Second, segmentation masks were not consistently suitable for every case after conversion and preprocessing. Third, good training curves did not always translate into trustworthy visual localization on held-out examples. As a result, segmentation was repurposed as supporting evidence for label generation and ROI checking, while the main task was reframed as controlled anomaly classification.
+
+\section{PNG Export for Demonstration}
+The original pipeline used NIfTI files. For the final demonstration, PNG versions of the training X-rays were exported. Two PNG datasets were created: full-image PNGs and ROI-PNGs. Contact sheets were generated to verify that orientation and anatomical content were preserved.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.62\textheight,keepaspectratio]{full_png_original_patients_contact_sheet.png}
+    \caption{Full PNG export contact sheet for original patients. This visual audit was used to check image orientation after conversion from NIfTI.}
+    \label{fig:full_png_contact}
+\end{figure}
+
+\section{X-ray Classifier}
+The main classifier consists of a ResNet34 encoder followed by a binary classification head. The model was trained with binary cross-entropy loss and evaluated at the patient level by aggregating predictions across samples. The best threshold was selected on each validation fold using balanced accuracy, due to class imbalance and the small validation size.
+
+\section{CT Projection Alignment}
+For patients with available CT scans, simple CT projections were generated without manual registration. Three CT projection sources were explored: raw CT projections, CT-mask projections, and masked CT projections. HU thresholding and orientation correction were later added after visual inspection showed that the initial projections were not consistently upright or bone-focused.
+
+The multimodal model did not require CT at inference. Instead, CT projections were used only during training through latent alignment. Samples without CT were trained using only the classification loss.
+
+\section{Auxiliary Supervision Experiments}
+In addition to binary anomaly classification, auxiliary supervision was evaluated in order to test whether weak anatomical labels could make the model more robust. Three auxiliary directions were explored:
+
+\begin{itemize}
+    \item Region-aware multitask learning, where the model predicted coarse anatomical regions in addition to anomaly/healthy classification.
+    \item Anomaly-type auxiliary learning, where the model attempted to predict available anomaly categories.
+    \item Combined auxiliary learning, where region supervision, anomaly-type supervision, and CT-mask latent alignment were tested together.
+\end{itemize}
+
+Region labels were coarse multi-label targets extracted from available annotation text, using cervical, thoracic, and lumbar categories. Anomaly-type labels represented available categories such as hemivertebra, block vertebra, and butterfly vertebra when they were present in the annotations. These auxiliary labels were used only as training signals. Because the number of patients was small and some labels were sparse, overlapping, or imbalanced, the auxiliary outputs were not treated as reliable clinical predictions.

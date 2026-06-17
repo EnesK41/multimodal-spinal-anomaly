@@ -1,0 +1,13 @@
+{
+  "demo_holdout_patients": [
+    "patient_004",
+    "patient_006",
+    "patient_023",
+    "patient_025",
+    "patient_036",
+    "patient_039",
+    "patient_055",
+    "patient_058"
+  ],
+  "note": "All augmentations of these base patients are excluded from training. Validation uses original samples only."
+}

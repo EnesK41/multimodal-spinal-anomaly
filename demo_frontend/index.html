@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spinal Anomaly Detection Demo</title>
+    <link rel="stylesheet" href="styles.css?v=20260614-heldoutlist" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div class="brand">
+            <span class="brand-mark">SA</span>
+            <div>
+              <h1>Spinal Anomaly Detection</h1>
+              <p>X-ray based anomaly screening demo</p>
+            </div>
+          </div>
+          <div class="model-chip" id="modelStatus">
+            <span class="status-dot"></span>
+            <span>Waiting for model server</span>
+          </div>
+        </header>
+
+        <section class="demo-grid">
+          <div class="image-stage">
+            <div class="stage-toolbar">
+              <div>
+                <p class="eyebrow">Patient Input</p>
+                <h2>X-ray Analysis</h2>
+              </div>
+              <div class="view-tabs" role="tablist" aria-label="Image view">
+                <button class="tab active" data-view="original">Original</button>
+                <button class="tab" data-view="roi">ROI</button>
+              </div>
+            </div>
+
+            <div class="viewer" id="viewer">
+              <img id="previewImage" alt="Selected X-ray preview" />
+              <div class="empty-state" id="emptyState">
+                <strong>No X-ray selected</strong>
+                <span>Upload a PNG/JPG/NIfTI image or run the built-in sample.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <label class="file-button">
+                <input id="fileInput" type="file" accept=".png,.jpg,.jpeg,.nii,.gz,image/png,image/jpeg" />
+                Select X-ray
+              </label>
+              <button class="button primary" id="analyzeButton" disabled>Analyze</button>
+              <button class="button ghost" id="healthySampleButton">Test Healthy</button>
+              <button class="button ghost" id="anomalySampleButton">Test Anomaly</button>
+            </div>
+            <p class="sample-note">Built-in test samples are held-out patients not used to train the loaded fold model.</p>
+
+            <div class="heldout-list" aria-label="Held-out test patients">
+              <span>Held-out test patients</span>
+              <code>patient_002</code>
+              <code>patient_007</code>
+              <code>patient_018</code>
+              <code>patient_027</code>
+              <code>patient_032</code>
+              <code>patient_042</code>
+              <code>patient_045</code>
+              <code>patient_052</code>
+            </div>
+          </div>
+
+          <aside class="result-panel">
+            <div class="panel-head">
+              <p class="eyebrow">Model Output</p>
+              <h2 id="decisionText">Not analyzed</h2>
+            </div>
+
+            <div class="risk-meter">
+              <div class="risk-ring" id="riskRing">
+                <span id="riskValue">--</span>
+              </div>
+              <div>
+                <span class="label">Anomaly probability</span>
+                <strong id="probabilityText">Waiting for input</strong>
+                <p id="thresholdText">Threshold will be loaded from the checkpoint.</p>
+              </div>
+            </div>
+
+            <div class="finding-list">
+              <div class="finding">
+                <span>Prediction</span>
+                <strong id="predictionLabel">--</strong>
+              </div>
+              <div class="finding">
+                <span>Confidence</span>
+                <strong id="confidenceLabel">--</strong>
+              </div>
+              <div class="finding">
+                <span>ROI crop</span>
+                <strong id="roiLabel">--</strong>
+              </div>
+              <div class="finding">
+                <span>Checkpoint</span>
+                <strong id="checkpointLabel">--</strong>
+              </div>
+            </div>
+
+            <div class="note-box" id="noteBox">
+              This demo is a decision-support prototype. It is not a clinical diagnosis system.
+            </div>
+          </aside>
+        </section>
+
+        <section class="pipeline">
+          <article class="step active" id="stepInput">
+            <span>1</span>
+            <div>
+              <h3>Input</h3>
+              <p>Frontal spine X-ray is loaded from file.</p>
+            </div>
+          </article>
+          <article class="step" id="stepPreprocess">
+            <span>2</span>
+            <div>
+              <h3>Preprocess</h3>
+              <p>Image is normalized, padded, and body-centered ROI is extracted.</p>
+            </div>
+          </article>
+          <article class="step" id="stepModel">
+            <span>3</span>
+            <div>
+              <h3>Model</h3>
+              <p>ResNet34 encoder and classifier estimate anomaly probability.</p>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js?v=20260614-heldoutlist"></script>
+  </body>
+</html>

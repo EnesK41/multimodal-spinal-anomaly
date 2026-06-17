@@ -1,0 +1,50 @@
+{
+  "run_name": "png_roi045_no_extra_roi_seed42_resnet34_pretrained_mask_scrubbed_fold_05",
+  "checkpoint": "checkpoints\\png_roi045_no_extra_roi_seed42_resnet34_pretrained_mask_scrubbed_fold_05_best.pth",
+  "data_dir": "data/png_patients_roi045",
+  "use_body_roi": false,
+  "demo_holdout_patients": [
+    "patient_004",
+    "patient_006",
+    "patient_023",
+    "patient_025",
+    "patient_036",
+    "patient_039",
+    "patient_055",
+    "patient_058"
+  ],
+  "best_epoch": 3,
+  "best_threshold": 0.2,
+  "best_score_balanced_accuracy": 0.75,
+  "holdout_metrics_best_threshold": {
+    "accuracy": 0.875,
+    "balanced_accuracy": 0.75,
+    "auc": 0.8333333333333333,
+    "sensitivity": 1.0,
+    "specificity": 0.5,
+    "precision": 0.8571428571428571,
+    "recall": 1.0,
+    "f1": 0.923076923076923,
+    "tp": 6,
+    "tn": 1,
+    "fp": 1,
+    "fn": 0,
+    "n": 8
+  },
+  "holdout_metrics_default_threshold": {
+    "accuracy": 0.75,
+    "balanced_accuracy": 0.6666666666666667,
+    "auc": 0.8333333333333333,
+    "sensitivity": 0.8333333333333334,
+    "specificity": 0.5,
+    "precision": 0.8333333333333334,
+    "recall": 0.8333333333333334,
+    "f1": 0.8333333333333334,
+    "tp": 5,
+    "tn": 1,
+    "fp": 1,
+    "fn": 1,
+    "n": 8
+  },
+  "split_csv": "experiment_results\\png_classifier\\png_demo_holdout_split.csv"
+}

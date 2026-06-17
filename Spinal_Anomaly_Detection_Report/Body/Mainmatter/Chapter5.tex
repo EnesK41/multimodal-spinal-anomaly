@@ -1,0 +1,32 @@
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\section{Conclusion}
+This study investigated spinal anomaly detection from pediatric frontal X-ray images using a curated subset of the available hospital data. The main challenge was not only model design but also the reliability of the dataset itself. The initial experiments showed that patient identifiers, prompts, and augmentation strategy could easily create misleadingly high scores if not controlled carefully.
+
+The final pipeline therefore prioritized conservative data handling. All experiments used patient-level splitting, augmented versions were kept together with their base patients, and diagnostic prompts were scrubbed. Under this protocol, an ImageNet-pretrained ResNet34 classifier trained on ROI-centered X-ray images achieved strong patient-level cross-validation performance. A PNG-compatible model was then developed for demonstration and achieved performance close to the original NIfTI-based model.
+
+CT-supported multimodal learning was also explored through latent alignment. The selected CT-supported model is the corrected CT-mask alignment configuration. In this setting, CT is used during training as auxiliary anatomical supervision, while the inference input remains X-ray. Corrected CT-mask alignment reached the level of the X-ray-only baseline, suggesting that CT information can provide useful anatomical regularization. However, the expected improvement was limited by imbalanced CT coverage, field-of-view mismatch between CT and X-ray data, and the lack of registration between projections and clinical X-rays.
+
+Region-aware and anomaly-type auxiliary heads were also evaluated. These experiments showed that weak anatomical supervision can influence binary classification, but the auxiliary predictions were not accurate enough to be presented as reliable localization or diagnosis. Overall, the project presents a CT-supported multimodal training pipeline built around a carefully controlled X-ray anomaly classifier. The corrected CT-mask alignment model is the selected multimodal result, while the X-ray-only and PNG-compatible models serve as baseline and demonstration-compatible comparisons.
+
+\section{Limitations}
+The project has several limitations:
+\begin{itemize}
+    \item The reported experiments use 42 cleaned base patients; additional raw patients require the same preprocessing and quality-control pipeline before they can be fairly included.
+    \item Cross-validation folds are patient-level but not external validation cohorts.
+    \item Healthy CT scans are not available, limiting the balance of multimodal CT alignment.
+    \item CT projections were generated without registration to the corresponding X-ray.
+    \item Best-threshold balanced accuracy can be optimistic because thresholds are selected on validation folds; fixed-threshold scores were reported where available to show calibration sensitivity.
+    \item Region-aware, anomaly-type, and Grad-CAM analyses were not reliable enough to claim anatomical localization.
+\end{itemize}
+
+\section{Future Work}
+Future work should focus on improving data quality and external validity:
+\begin{itemize}
+    \item Processing the remaining raw patients into the same standardized format and then expanding the curated healthy/anomaly X-ray dataset.
+    \item Acquiring healthy CT scans or alternative anatomical priors to balance multimodal training.
+    \item Applying registration between X-rays and DRR projections to reduce the CT-X-ray domain gap.
+    \item Developing reliable region-level labels before using region prediction as a clinical output.
+    \item Validating the final classifier on a fully independent external test set.
+\end{itemize}

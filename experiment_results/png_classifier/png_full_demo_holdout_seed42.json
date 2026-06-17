@@ -1,0 +1,47 @@
+{
+  "run_name": "png_full_demo_holdout_seed42",
+  "checkpoint": "checkpoints\\png_full_demo_holdout_seed42_best.pth",
+  "data_dir": "data/png_patients_full",
+  "demo_holdout_patients": [
+    "patient_002",
+    "patient_004",
+    "patient_028",
+    "patient_038",
+    "patient_040",
+    "patient_042"
+  ],
+  "best_epoch": 3,
+  "best_threshold": 0.9,
+  "best_score_balanced_accuracy": 1.0,
+  "holdout_metrics_best_threshold": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 3,
+    "tn": 3,
+    "fp": 0,
+    "fn": 0,
+    "n": 6
+  },
+  "holdout_metrics_default_threshold": {
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5,
+    "auc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "tp": 3,
+    "tn": 0,
+    "fp": 3,
+    "fn": 0,
+    "n": 6
+  },
+  "split_csv": "experiment_results\\png_classifier\\png_demo_holdout_split.csv"
+}

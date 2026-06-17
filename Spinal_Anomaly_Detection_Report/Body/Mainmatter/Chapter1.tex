@@ -1,0 +1,37 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Background and Motivation}
+Spinal deformities and structural anomalies in pediatric patients are commonly evaluated using radiological imaging. Frontal X-ray images are clinically practical because they are inexpensive, fast, widely available, and commonly used as an initial imaging modality for spinal assessment. These properties make X-ray-based analysis valuable for a prototype system that aims to work with routinely acquired images.
+
+CT and MRI provide important complementary information, but they are less suitable as the primary input for this project. CT contains richer 3D bony anatomy, but it introduces additional radiation burden, which is not ideal for repeated evaluation in pediatric patients. MRI avoids ionizing radiation and provides strong soft-tissue contrast, but it is slower, less practical for routine frontal bony-alignment screening, and not the main clinical modality targeted by this prototype. For these reasons, CT was treated as a training-time anatomical support signal rather than a required inference-time input, while MRI was kept outside the scope of the final model.
+
+However, interpreting spinal X-rays can be difficult because the 2D projection compresses complex 3D anatomy into a single image. Bone overlap, rib shadows, limited field-of-view, and patient positioning differences can obscure diagnostically relevant structures.
+
+Deep learning has shown strong potential in medical image analysis, especially for classification and segmentation tasks. Nevertheless, medical AI systems are highly sensitive to dataset quality. Inconsistent labels, acquisition variability, unprocessed raw cases, and metadata leakage can lead to models that appear accurate in experiments but fail to generalize \cite{zech2018variable,roberts2021common}. This risk is particularly important in this project because the experiment-ready subset is much smaller than the raw hospital data pool and contains augmented versions of the same patients.
+
+\section{Problem Statement}
+The goal of this project is to develop a research prototype that can classify pediatric frontal spinal X-ray images as anomaly-positive or healthy/empty. In this thesis, healthy/empty refers to samples with no positive anomaly mask. The main difficulty is not the complete absence of raw data, but the limited number of consistently prepared, quality-controlled, and label-usable patients available for controlled experiments. After cleaning and filtering, the classification dataset used for the reported experiments contains 42 unique base patients. This makes the project vulnerable to overfitting, patient leakage, and shortcut learning.
+
+The second challenge is multimodality. CT scans contain richer 3D anatomical information than X-rays, but requiring CT at inference would reduce the practicality of an X-ray-first pediatric screening prototype. In addition, CT and X-ray fields-of-view are not naturally identical, and geometric registration is required before they can be treated as spatially matched views. Therefore, CT information was explored as a training-time support signal rather than as a required inference-time input.
+
+\section{Proposed Approach}
+This thesis investigates a conservative X-ray classification pipeline supported by multimodal CT experiments. The core approach is based on a ResNet34 image encoder trained with patient-level cross-validation. Several precautions were applied:
+\begin{itemize}
+    \item all augmented versions of a patient were kept in the same split;
+    \item validation folds used original images only;
+    \item diagnostic prompt text was removed from the model input;
+    \item labels were derived from non-empty anomaly masks to reduce metadata dependency;
+    \item PNG export was validated against the original NIfTI training pipeline for demo compatibility.
+\end{itemize}
+
+In addition to X-ray-only classification, CT-based latent alignment was explored. In this setting, CT projections or CT-mask projections are used during training as an anatomical teacher signal. At inference time, the model still requires only a single X-ray image.
+
+\section{Thesis Organization}
+The remainder of this thesis is organized as follows:
+\begin{itemize}
+    \item \textbf{Chapter \ref{ch:theory}} introduces the theoretical background of CNNs, transfer learning, segmentation, and multimodal latent alignment.
+    \item \textbf{Chapter \ref{ch:method}} describes the dataset, preprocessing steps, split protocol, segmentation exploration, X-ray classifier, PNG conversion, and CT projection alignment method.
+    \item \textbf{Chapter \ref{ch:results}} presents the experimental results, including leakage analysis, cross-validation scores, segmentation lessons, PNG/NIfTI comparison, CT alignment experiments, and demo fold verification.
+    \item \textbf{Chapter \ref{ch:conclusion}} concludes the study and discusses limitations and future work.
+\end{itemize}

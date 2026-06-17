@@ -1,0 +1,12 @@
+file,experiment,encoder_type,pretrained_encoder,roi_width_ratio,label_source,scrub_prompts,mean_default_balanced_accuracy,mean_best_threshold_balanced_accuracy,mean_best_balanced_accuracy,fold_scores,thresholds,dummy_prior_default_bal_acc,dummy_prior_best_bal_acc,prompt_text_default_bal_acc,prompt_text_best_bal_acc,patient_number_aug_counts_default_bal_acc,patient_number_aug_counts_best_bal_acc
+cv5_resnet34_pretrained_mask_scrubbed_roi035_seed_42.json,cv5,,,,,,,0.869047619047619,0.869047619047619,"0.929, 0.917, 0.750, 1.000, 0.750","0.600, 0.850, 0.500, 0.100, 0.600",,,,,,
+cv5_resnet34_pretrained_mask_scrubbed_roi045_seed_42.json,cv5,,,,,,,0.919047619047619,0.919047619047619,"0.929, 1.000, 0.833, 0.917, 0.917","0.500, 0.350, 0.700, 0.400, 0.800",,,,,,
+cv5_seed123_resnet34_pretrained_mask_scrubbed_roi045_seed_123.json,cv5,,,,,,,0.8523809523809524,0.8523809523809524,"0.929, 0.833, 1.000, 1.000, 0.500","0.500, 0.800, 0.350, 0.550, 0.050",,,,,,
+cv5_seed7_resnet34_pretrained_mask_scrubbed_roi045_seed_7.json,cv5,,,,,,,0.9023809523809524,0.9023809523809524,"0.929, 0.750, 1.000, 0.833, 1.000","0.550, 0.450, 0.550, 0.650, 0.500",,,,,,
+feature_baseline_resnet34_pretrained_roi_035_seed_42.json,feature_baseline,resnet34,True,0.35,mask,True,0.773809523809524,0.8571428571428571,,"0.786, 0.917, 0.917, 0.917, 0.750","0.600, 0.050, 0.500, 0.600, 0.050",,,,,,
+feature_baseline_resnet34_pretrained_roi_045_seed_42.json,feature_baseline,resnet34,True,0.45,mask,True,0.7095238095238094,0.7904761904761906,,"0.619, 1.000, 0.667, 0.917, 0.750","0.050, 0.050, 0.650, 0.300, 0.050",,,,,,
+feature_baseline_resnet34_pretrained_roi_06_seed_42.json,feature_baseline,resnet34,True,0.6,mask,True,0.6904761904761905,0.7761904761904762,,"0.714, 0.833, 0.750, 0.833, 0.750","0.850, 0.050, 0.800, 0.350, 0.050",,,,,,
+feature_baseline_resnet34_scratch_roi_045_seed_42.json,feature_baseline,resnet34,False,0.45,mask,True,0.5380952380952381,0.7261904761904762,,"0.714, 0.750, 0.667, 0.750, 0.750","0.900, 0.250, 0.950, 0.150, 0.100",,,,,,
+metadata_baseline_patient_range_raw_seed_42.json,metadata_baseline,,,,patient_range,False,,,,,,0.5,0.5,0.8666666666666666,0.9333333333333332,0.8300000000000001,0.8633333333333333
+metadata_baseline_patient_range_scrubbed_seed_42.json,metadata_baseline,,,,patient_range,True,,,,,,0.5,0.5,0.5,0.5,0.8300000000000001,0.8633333333333333
+metadata_baseline_seed_42.json,metadata_baseline,,,,,,,,,,,0.5,0.5,1.0,1.0,0.8023809523809524,0.8523809523809524

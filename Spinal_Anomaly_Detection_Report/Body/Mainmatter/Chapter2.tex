@@ -1,0 +1,44 @@
+\chapter{Theoretical Background}
+\label{ch:theory}
+
+\section{Deep Learning for Medical Imaging}
+Deep learning models learn hierarchical feature representations directly from data. In medical imaging, convolutional neural networks (CNNs) are frequently used because they can extract local visual patterns such as edges, textures, and anatomical structures. However, reliable medical AI requires careful evaluation, since high performance on a small or leaked dataset may not represent true clinical generalization \cite{litjens2017survey,roberts2021common}.
+
+\section{Convolutional Neural Networks and ResNet}
+CNNs apply learnable convolutional filters across an image to capture spatial features. Deeper CNNs can learn more abstract representations, but they are also harder to optimize. Residual Networks (ResNets) address this problem through skip connections, allowing gradients to flow more reliably through deep architectures \cite{he2016resnet}. In this project, a ResNet34 encoder is used as the main X-ray feature extractor.
+
+\section{Transfer Learning}
+Transfer learning initializes a model with weights learned from a large source dataset, such as ImageNet \cite{deng2009imagenet}, and then fine-tunes it on a smaller target dataset. This is especially useful in medical imaging, where labeled data is limited \cite{litjens2017survey}. The final classifier in this project uses an ImageNet-pretrained ResNet34 backbone, which provided more stable performance than training from scratch.
+
+\section{Segmentation and Mask-derived Labels}
+Segmentation models identify pixel-level regions of interest. Although the final deployed model is a classifier, available anomaly masks were used to derive binary labels: images with non-empty anomaly masks were treated as anomaly-positive, while images with empty anomaly masks were treated as healthy/empty. U-Net is a widely used architecture for biomedical segmentation because it combines encoder-level context with decoder-level localization \cite{ronneberger2015u}.
+
+\section{Text-image Alignment and Leakage Risk}
+CLIP-style models align image and text embeddings in a shared latent space \cite{radford2021clip}. This idea is attractive for medical imaging when textual descriptions contain useful semantic information. However, in this project the available prompt text often contained direct diagnostic words such as anomaly type, healthy status, or anatomical region. Using such text as model input would allow the model to learn the answer from the text rather than from the X-ray.
+
+An early segmentation prototype used CLIP-style text embeddings to compare the X-ray embedding with diagnosis descriptions. This was useful as an exploratory implementation, but it also exposed a serious leakage risk because the text options contained direct class names. For this reason, CLIP/BiomedCLIP-style text guidance was not used in the final classifier. Text was treated only as a possible annotation source for auxiliary labels, such as coarse region labels, while the model input remained image-only.
+
+\section{Digitally Reconstructed Radiographs}
+Digitally Reconstructed Radiographs (DRRs) are 2D projections generated from 3D CT volumes \cite{sherouse1990drr}. They can provide synthetic X-ray-like views with known anatomical content. In this project, CT projections were used as a source of anatomical supervision for multimodal experiments. HU thresholding was applied to emphasize bone structures and suppress soft tissue.
+
+\section{Multimodal Latent Alignment}
+Multimodal learning aims to use information from multiple imaging modalities. In this project, CT is not available for every patient and is absent for healthy cases. Therefore, the adopted strategy is training-time latent alignment rather than inference-time multimodal fusion.
+
+The initial design was inspired by cross-modal latent alignment ideas, including GRAM-like alignment between X-ray, CT, and text representations. The implemented version was kept simpler and more controlled: it used cosine alignment between X-ray embeddings and CT projection embeddings, while text embeddings were excluded from the final model because of the leakage risk described above.
+
+Let $f_x(x)$ be the X-ray encoder and $f_c(c)$ be the CT projection encoder. For samples with available CT data, the X-ray embedding is encouraged to align with the CT embedding using cosine similarity:
+
+\begin{equation}
+    \mathcal{L}_{align} = 1 - \cos(f_x(x), f_c(c)).
+\end{equation}
+
+The total loss combines binary classification loss and alignment loss:
+
+\begin{equation}
+    \mathcal{L}_{total} = \mathcal{L}_{BCE} + \lambda \mathcal{L}_{align}.
+\end{equation}
+
+This allows CT to act as an anatomical teacher during training, while the deployed model remains X-ray-only.
+
+\section{Model Explanation}
+Grad-CAM is a common visualization method for highlighting image regions that contribute to a CNN prediction \cite{selvaraju2017gradcam}. In this project, Grad-CAM was used only as an exploratory error-analysis tool. It was not used as evidence of reliable anatomical localization.
